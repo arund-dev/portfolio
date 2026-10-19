@@ -6,24 +6,24 @@
   <meta name="theme-color" content="#111310">
 
   <title>Arunda Ishara — Creative Developer</title>
-  <meta name="description" content="Portfolio of Arunda Ishara, a developer from Galle, Sri Lanka who builds apps with AI tools.">
+  <meta name="description" content="Arunda Ishara from Galle, Sri Lanka. I build apps with AI tools and turn ideas into useful digital experiences.">
   <meta property="og:title" content="Arunda Ishara — Creative Developer">
-  <meta property="og:description" content="Portfolio of Arunda Ishara, a developer from Galle, Sri Lanka.">
+  <meta property="og:description" content="I turn ideas into useful digital experiences. Explore my work and get in touch.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
-  <!-- Icon sprite: referenced below with <use href="#icon-…"> -->
-  <svg class="sprite" aria-hidden="true" focusable="false">
-    <symbol id="icon-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
-    <symbol id="icon-down-right" viewBox="0 0 24 24"><path d="M7 7 17 17M7 17h10V7"/></symbol>
-    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6"/></symbol>
-    <symbol id="icon-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+  <!-- SVG icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="i-arrow-down-right" viewBox="0 0 24 24"><path d="M7 7 17 17M7 17h10V7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6"/></symbol>
   </svg>
 
   <header>
@@ -34,10 +34,10 @@
       </a>
       <nav class="navlinks" aria-label="Main navigation">
         <a href="#about">About</a>
-        <a href="#work">Work</a>
+        <a href="#work">Selected work</a>
         <a class="nav-cta" href="#contact">
-          Contact
-          <span class="arrow arrow--sm accent" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-up-right"/></svg></span>
+          Let’s talk
+          <svg class="icon accent" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
         </a>
       </nav>
     </div>
@@ -48,28 +48,46 @@
     <!-- Hero -->
     <div class="wrap hero">
       <div class="hero-content">
-        <div class="eyebrow mono"><span class="dot"></span> CREATIVE DEVELOPER</div>
-        <h1>Arunda<br><span class="outline">Ishara</span><span class="accent">.</span></h1>
+        <div class="eyebrow mono"><span class="dot"></span> HELLO, WORLD — I'M ARUNDA</div>
+        <h1>Ideas into<br><span class="outline">real</span> things<span class="accent">.</span></h1>
         <p class="hero-copy">
-          Developer from Galle, Sri Lanka. I build web apps using AI tools.
+          I’m <strong>Arunda Ishara</strong> — a curious builder from Sri Lanka who uses AI tools to turn ideas into useful digital experiences, then tests them in the real world.
         </p>
         <div class="hero-actions">
           <a class="button" href="#work">
-            View my work
-            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-down-right"/></svg></span>
+            Explore my work
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-arrow-down-right"/></svg>
+          </a>
+          <a class="button secondary" href="#contact">
+            Get in touch
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
           </a>
           <a class="button secondary" href="assets/arunda-ishara-cv.pdf" download>
             Download CV
-            <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-download"/></svg></span>
+            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-download"/></svg>
           </a>
         </div>
         <div class="hero-note mono">
-          <span>GALLE, SRI LANKA</span>
+          <span>BASED IN GALLE, LK</span>
+          <span>OPEN TO ENTRY-LEVEL ROLES</span>
         </div>
       </div>
 
       <div class="portrait-wrap">
         <img class="portrait" src="assets/photo.jpg" alt="Portrait of Arunda Ishara with the sea behind him">
+        <span class="portrait-label">Curious by nature. Builder by choice.</span>
+        <span class="portrait-index">01 / INTRODUCTION</span>
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-label="Skills and interests">
+      <div class="wrap ticker-track">
+        <span><b aria-hidden="true">•</b> BUILDING WITH AI</span>
+        <span><b aria-hidden="true">•</b> WEB &amp; APP IDEAS</span>
+        <span><b aria-hidden="true">•</b> ALWAYS LEARNING</span>
+        <span><b aria-hidden="true">•</b> CREATIVE PROBLEM SOLVING</span>
+        <span><b aria-hidden="true">•</b> BUILDING WITH AI</span>
       </div>
     </div>
 
@@ -77,14 +95,15 @@
     <section class="content-section" id="about">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="section-no mono">01 / ABOUT</div>
-          <h2 class="section-title">Who <em>I am</em></h2>
+          <div class="section-no mono">01 / ABOUT ME</div>
+          <h2 class="section-title">Learning by making.<br><em>Growing with every build.</em></h2>
         </div>
 
         <div class="about-grid">
           <div></div>
           <div class="about-copy reveal">
-            <p>I’m a developer based in Galle, Sri Lanka. I build web apps using AI tools, with layouts that work on both phones and desktop.</p>
+            <p>I enjoy exploring what technology can make possible. I like figuring out how things work, trying ideas, and sticking with a problem until I can get it working on my own phone.</p>
+            <p>I’m at the beginning of my professional journey, bringing <strong>curiosity, persistence, and a willingness to learn</strong> to every project. I’m looking for an opportunity where I can contribute, learn from others, and keep building.</p>
 
             <div class="skill-grid">
               <div class="skill"><span class="num">01 / BUILD</span><h3>AI-assisted app building</h3></div>
@@ -103,38 +122,46 @@
     <section class="content-section" id="work">
       <div class="wrap">
         <div class="section-head reveal">
-          <div class="section-no mono">02 / WORK</div>
-          <h2 class="section-title">Selected <em>work</em></h2>
+          <div class="section-no mono">02 / SELECTED WORK</div>
+          <h2 class="section-title">A project I’ve been<br><em>building and learning from.</em></h2>
         </div>
 
-        <article class="reveal">
+        <article class="project reveal">
           <div class="project-top">
             <div class="project-title">
               <span class="project-icon">i</span>
               <h3>iLike</h3>
             </div>
+            <span class="project-tag">FEATURED PROJECT · 01</span>
           </div>
 
           <p class="project-description">
-            A social app for finding people with shared interests. It brings profiles, interest circles, photo posts and chat into one place.
+            iLike is a social app concept for finding people with shared interests. It brings profiles, interest circles, photo posts and chat into one place, with a layout made for phones as well as desktop.
           </p>
 
           <div class="project-meta">
-            <div><span>BUILT WITH</span><span>AI tools</span></div>
+            <div><span>MY APPROACH</span><span>AI-assisted building</span></div>
             <div><span>FOCUS</span><span>Social discovery</span></div>
             <div><span>FORMAT</span><span>Web app · installable</span></div>
           </div>
 
           <div class="screens">
-            <div class="screen-wide"><img src="assets/ilike-desktop.jpg" alt="iLike desktop profile with a post and photos" loading="lazy"></div>
-            <div class="screen-wide"><img src="assets/ilike-circles.jpg" alt="iLike interest circles list on desktop" loading="lazy"></div>
-            <div class="screen-phone"><img src="assets/ilike-profile.jpg" alt="iLike mobile profile screen showing interests and artists" loading="lazy"></div>
+            <div class="screen-wide">
+              <img src="assets/ilike-desktop.jpg" alt="iLike desktop profile with a post and photos" loading="lazy">
+            </div>
+            <div class="screen-wide">
+              <img src="assets/ilike-circles.jpg" alt="iLike interest circles list on desktop" loading="lazy">
+            </div>
+            <div class="screen-phone">
+              <img src="assets/ilike-profile.jpg" alt="iLike mobile profile screen showing interests and artists" loading="lazy">
+            </div>
           </div>
 
           <div class="project-bottom">
+            <p>Built while learning by doing — still a work in progress.</p>
             <a class="text-link" href="https://ilike.ilike-team789.workers.dev/" target="_blank" rel="noopener noreferrer">
-              View live
-              <span class="arrow arrow--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-up-right"/></svg></span>
+              Try iLike live
+              <svg class="icon icon--lg" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
             </a>
           </div>
         </article>
@@ -145,10 +172,18 @@
     <section class="content-section contact-section" id="contact">
       <div class="wrap">
         <div class="contact-panel reveal">
-          <h2>Contact</h2>
+          <div>
+            <div class="mono">03 / YOUR NEXT TEAMMATE?</div>
+            <h2>Let’s make<br>something useful.</h2>
+            <p>I’m open to entry-level opportunities and new connections. If you have an idea, a role, or just want to say hello, I’d love to hear from you.</p>
+          </div>
           <div class="contact-actions">
-            <a href="mailto:arunishara530@gmail.com">arunishara530@gmail.com</a>
+            <a class="dark-button" href="mailto:arunishara530@gmail.com">
+              Email me
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+            </a>
             <a href="tel:+94742547118">+94 74 254 7118</a>
+            <a href="mailto:arunishara530@gmail.com">arunishara530@gmail.com</a>
           </div>
         </div>
       </div>
@@ -158,9 +193,10 @@
 
   <footer class="wrap">
     <span>© 2026 ARUNDA ISHARA</span>
+    <span>MADE WITH CURIOSITY IN SRI LANKA</span>
     <a href="#top">
       BACK TO TOP
-      <span class="arrow arrow--sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-up"/></svg></span>
+      <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
     </a>
   </footer>
 
