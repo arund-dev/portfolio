@@ -62,7 +62,7 @@
   const update = () => {
     queued = false;
 
-    const progress = Math.min(1, Math.max(0, window.scrollY / (intro.offsetHeight * 0.8)));
+    const progress = Math.min(1, Math.max(0, window.scrollY / (intro.offsetHeight * 0.35)));
     intro.style.setProperty("--p", progress.toFixed(3));
 
     bugs.forEach((bug) => {

@@ -256,6 +256,7 @@ header {
   line-height: 1;
   letter-spacing: 0.04em;
   text-transform: none;
+  color: var(--ink);
 }
 
 /* Small decorative "<br>" tag after the name */
@@ -354,10 +355,11 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  /* x below 50% shows more of the photo's left side, which pushes the subject right in the frame */
+  object-position: 32% 40%;
   filter: saturate(0.82);
-  /* zoom a touch, then slide right so the subject sits a little to the right in the frame */
-  transform: scale(1.12) translateX(5%);
+  /* barely any zoom: just enough to hide a hairline edge */
+  transform: scale(1.03) translateX(1.4%);
 }
 
 .portrait-label {
@@ -484,7 +486,7 @@ header {
   width: 62%;
   margin: 0;
   padding-right: 28px;
-  color: #c8f16938;
+  color: #c8f1692c;
   font: 13.5px/1.7 var(--mono);
   text-align: right;
   white-space: pre;
@@ -502,24 +504,24 @@ header {
 }
 
 /* Variants of the site's lime green */
-.hero-code .k { color: #c8f16978; }
-.hero-code .s { color: #a6cf5a66; }
-.hero-code .f { color: #e2fa9c70; }
-.hero-code .p { color: #c8f16952; }
-.hero-code .c { color: #c8f16932; }
+.hero-code .k { color: #c8f1695a; }
+.hero-code .s { color: #a6cf5a4c; }
+.hero-code .f { color: #e2fa9c52; }
+.hero-code .p { color: #c8f1693c; }
+.hero-code .c { color: #c8f16924; }
 
 /* A typo: red and squiggly until the page "fixes" it on scroll */
 .hero-code .bug {
-  color: #ff787894;
+  color: #ff787870;
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  text-decoration-color: #ff7878b8;
+  text-decoration-color: #ff787890;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 .hero-code .bug.fixed {
-  color: #c8f169b0;
+  color: #c8f1698a;
   text-decoration: none;
   animation: bug-fixed 0.7s ease-out;
 }
@@ -534,8 +536,8 @@ header {
   width: 8px;
   height: 1.15em;
   margin-left: 3px;
-  background: #c8f169cc;
-  box-shadow: 0 0 10px #c8f16966;
+  background: #c8f169a0;
+  box-shadow: 0 0 8px #c8f16944;
   vertical-align: text-bottom;
   animation: caret-blink 1.1s steps(1, end) infinite;
 }
@@ -1195,7 +1197,7 @@ footer a:hover {
     width: 100%;
     padding-right: 14px;
     font-size: 11px;
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   /* Ticker scrolls on small screens */
