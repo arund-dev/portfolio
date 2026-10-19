@@ -60,7 +60,7 @@
       <div class="hero-visual">
         <div class="portrait-wrap">
           <img class="portrait" src="assets/photo.jpg" alt="Portrait of Arunda Ishara with the sea behind him">
-          <span class="portrait-label">Curious by nature. Builder by choice.</span>
+          <span class="portrait-label" data-text="Curious by nature. Builder by choice.">Curious by nature. Builder by choice.</span>
           <span class="portrait-code" aria-hidden="true"><span class="c-punct">&lt;</span><span class="c-tag">img</span> <span class="c-attr">src</span><span class="c-punct">=</span><span class="c-str squiggle">"arunda.jpg"</span><span class="c-punct">&gt;</span></span>
         </div>
         <div class="hero-actions">
@@ -168,49 +168,29 @@
     <section class="content-section contact-section" id="contact">
       <div class="wrap">
         <div class="contact-panel reveal">
-          <svg class="contact-art" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-            <defs>
-              <pattern id="art-dots" width="18" height="18" patternUnits="userSpaceOnUse">
-                <circle cx="2" cy="2" r="1.4" fill="currentColor"/>
-              </pattern>
-              <pattern id="art-stripes" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                <rect width="3" height="12" fill="currentColor"/>
-              </pattern>
-            </defs>
-
-            <!-- curvy lines -->
-            <g fill="none" stroke="currentColor" stroke-linecap="round">
-              <path d="M-10 360C120 280 220 440 380 360S620 240 760 300 960 380 1010 320" stroke-width="1.5" opacity=".1"/>
-              <path d="M-10 395C140 330 260 460 420 395S660 290 800 345 970 420 1010 380" opacity=".07"/>
-              <path d="M520-10C600 70 700-20 790 50S940 110 1010 40" opacity=".08"/>
-            </g>
-
-            <!-- strips -->
-            <rect x="870" y="-40" width="64" height="220" fill="url(#art-stripes)" opacity=".09" transform="rotate(24 902 70)"/>
-            <rect x="-30" y="318" width="230" height="22" fill="url(#art-stripes)" opacity=".09" transform="rotate(-8 85 329)"/>
-            <rect x="300" y="-10" width="3" height="90" fill="currentColor" opacity=".08" transform="rotate(30 301 35)"/>
-            <rect x="470" y="372" width="3" height="70" fill="currentColor" opacity=".08" transform="rotate(-28 471 407)"/>
-
-            <!-- dots -->
-            <rect x="40" y="226" width="126" height="72" fill="url(#art-dots)" opacity=".16"/>
-            <rect x="690" y="36" width="108" height="72" fill="url(#art-dots)" opacity=".16"/>
-            <g fill="currentColor" opacity=".12">
-              <circle cx="430" cy="34" r="3"/>
-              <circle cx="615" cy="395" r="3.5"/>
-              <circle cx="968" cy="300" r="3"/>
-              <circle cx="212" cy="120" r="2.5"/>
-            </g>
-
-            <!-- little circles -->
-            <g fill="none" stroke="currentColor" stroke-width="1.2" opacity=".12">
-              <circle cx="540" cy="72" r="10"/>
-              <circle cx="118" cy="62" r="6"/>
-              <circle cx="700" cy="352" r="14"/>
-              <circle cx="936" cy="236" r="6"/>
-              <circle cx="330" cy="380" r="8"/>
-            </g>
-          </svg>
-          <div>
+          <div class="contact-art" aria-hidden="true">
+            <svg class="art-curves" viewBox="0 0 1000 400" preserveAspectRatio="none" focusable="false">
+              <path d="M-10 330C120 260 220 400 380 330S620 220 760 275 960 350 1010 295"/>
+              <path d="M-10 370C140 310 260 420 420 370S660 270 800 320 970 390 1010 355"/>
+              <path d="M520-10C600 60 700-10 790 45S940 100 1010 35"/>
+            </svg>
+            <span class="art-strip art-strip--a"></span>
+            <span class="art-strip art-strip--b"></span>
+            <span class="art-bar art-bar--a"></span>
+            <span class="art-bar art-bar--b"></span>
+            <span class="art-dots art-dots--a"></span>
+            <span class="art-dots art-dots--b"></span>
+            <span class="art-ring art-ring--1"></span>
+            <span class="art-ring art-ring--2"></span>
+            <span class="art-ring art-ring--3"></span>
+            <span class="art-ring art-ring--4"></span>
+            <span class="art-ring art-ring--5"></span>
+            <span class="art-dot art-dot--1"></span>
+            <span class="art-dot art-dot--2"></span>
+            <span class="art-dot art-dot--3"></span>
+            <span class="art-dot art-dot--4"></span>
+          </div>
+          <div class="contact-copy">
             <div class="mono">03 / YOUR NEXT TEAMMATE?</div>
             <h2>Let’s make<br>something useful.</h2>
             <p>I’m open to entry-level opportunities and new connections. If you have an idea, a role, or just want to say hello, I’d love to hear from you.</p>
