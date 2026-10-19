@@ -226,28 +226,9 @@ header.scrolled .brandmark {
   color: var(--accent);
 }
 
-/* Animated underline + "you are here" state for the section links */
+/* "You are here" state for the section links (colour only, no growing line) */
 .navlinks a:not(.nav-cta) {
-  position: relative;
   padding: 6px 0;
-}
-
-.navlinks a:not(.nav-cta)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.navlinks a:not(.nav-cta):hover::after,
-.navlinks a.active::after {
-  transform: scaleX(1);
 }
 
 .navlinks a.active {
@@ -407,11 +388,22 @@ header.scrolled .brandmark {
   background: var(--panel);
 }
 
+/* Blurred copy of the photo behind it, so the strip uncovered by sliding the photo right looks seamless */
+.portrait-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/photo.jpg") 0% 40% / cover no-repeat;
+  filter: blur(16px) saturate(0.82) brightness(0.9);
+  transform: scale(1.15);
+}
+
 /* A soft light sweep that passes over the photo every few seconds */
 .portrait-frame::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 2;
   background: linear-gradient(105deg, transparent 38%, #ffffff1c 50%, transparent 62%);
   transform: translateX(-120%);
   animation: photo-sheen 8s ease-in-out infinite;
@@ -424,6 +416,8 @@ header.scrolled .brandmark {
 }
 
 .portrait {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
@@ -432,6 +426,10 @@ header.scrolled .brandmark {
      photo allows without leaving a gap. Raise it (e.g. 20%) to move the subject back toward the left. */
   object-position: 0% 40%;
   filter: saturate(0.82);
+  /* Slide the photo right inside the frame (no zoom). Raise/lower the 6% to move it more/less. */
+  transform: translateX(6%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%);
+  mask-image: linear-gradient(to right, transparent 0, #000 5%);
 }
 
 .portrait-label {
