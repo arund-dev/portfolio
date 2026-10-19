@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="main.js" defer></script>
 </head>
@@ -45,36 +45,73 @@
 
   <main id="top">
 
-    <!-- Hero -->
-    <div class="wrap hero">
-      <div class="hero-content">
-        <div class="eyebrow mono"><span class="dot"></span>HELLO WORLD! <span class="face">^_^</span></div>
-        <p class="hero-im">I’m</p>
-        <h1>Arunda<span class="code-tag" aria-hidden="true">&lt;br&gt;</span><br><span class="outline">Ishara</span><span class="accent">.</span></h1>
-        <p class="hero-copy">
-          A curious builder who uses AI tools to turn ideas into useful digital experiences, then tests them in the real world.
-        </p>
-        <div class="hero-note mono">BASED IN GALLE, LK</div>
-      </div>
+    <!-- Intro -->
+    <section class="intro" aria-label="Introduction">
+      <div class="hero-bg" aria-hidden="true">
+        <pre class="hero-code"><code><span class="c">&lt;!-- index.html --&gt;</span>
+&lt;<span class="k">section</span> <span class="p">class</span>=<span class="s">"intro"</span>&gt;
+  &lt;<span class="k">h1</span>&gt;Arunda Ishara&lt;/<span class="k">h1</span>&gt;
+  &lt;<span class="k">p</span>&gt;curious builder&lt;/<span class="k">p</span>&gt;
+&lt;/<span class="k">section</span>&gt;
 
-      <div class="hero-visual">
-        <div class="portrait-wrap">
-          <img class="portrait" src="assets/photo.jpg" alt="Portrait of Arunda Ishara with the sea behind him">
-          <span class="portrait-label" data-text="Curious by nature. Builder by choice.">Curious by nature. Builder by choice.</span>
-          <span class="portrait-code" aria-hidden="true"><span class="c-punct">&lt;</span><span class="c-tag">img</span> <span class="c-attr">src</span><span class="c-punct">=</span><span class="c-str squiggle">"arunda.jpg"</span><span class="c-punct">&gt;</span></span>
+<span class="c">// idea.js</span>
+<span class="k">async function</span> <span class="f">buildIdea</span>(idea) {
+  <span class="k">const</span> app = <span class="k">await</span> ai.<span class="f">assist</span>(idea);
+
+  <span class="k">while</span> (!app.<span class="bug" data-fix="works" data-at=".06">wroks</span>) {
+    app.<span class="f">test</span>();
+    app.<span class="bug" data-fix="improve" data-at=".18">imporve</span>();
+  }
+
+  <span class="k">return</span> app.<span class="f">ship</span><span class="bug" data-fix="()" data-at=".3">(</span>;
+}
+
+<span class="c">/* styles.css */</span>
+.portfolio {
+  <span class="p">display</span>: <span class="bug" data-fix="grid" data-at=".42">gird</span>;
+  <span class="p">gap</span>: <span class="s">24px</span>;
+  <span class="p">color</span>: <span class="bug" data-fix="var(--accent)" data-at=".54">var(--acent)</span>;
+}
+
+<span class="k">const</span> me = {
+  name: <span class="s">"Arunda Ishara"</span>,
+  tools: [<span class="s">"AI"</span>, <span class="s">"curiosity"</span>],
+  next: <span class="bug" data-fix="true" data-at=".66">ture</span>,
+};
+
+<span class="c">// TODO:</span> <span class="bug" data-fix="ship it ✓" data-at=".8">fix everything</span>
+<span class="f">buildIdea</span>(me)<span class="bug" data-fix=".then(ship)" data-at=".92">.then(shpi)</span>;<span class="caret"></span></code></pre>
+      </div>
+      <div class="wrap hero">
+        <div class="hero-content">
+          <div class="eyebrow mono"><span class="dot"></span>HELLO WORLD! <span class="face">^_^</span></div>
+          <p class="hero-im">I’m</p>
+          <h1>Arunda<span class="code-tag" aria-hidden="true">&lt;br&gt;</span><br><span class="outline">Ishara</span><span class="accent">.</span></h1>
+          <p class="hero-copy">
+            A curious builder who uses AI tools to turn ideas into useful digital experiences, then tests them in the real world.
+          </p>
+          <div class="hero-note mono">BASED IN GALLE, LK</div>
         </div>
-        <div class="hero-actions">
-          <a class="button" href="#work">
-            Explore my work
-            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-arrow-down-right"/></svg>
-          </a>
-          <a class="button secondary" href="assets/arunda-ishara-cv.pdf" download>
-            Download CV
-            <svg class="icon icon--lg" aria-hidden="true"><use href="#i-download"/></svg>
-          </a>
+
+        <div class="hero-visual">
+          <div class="portrait-wrap">
+            <img class="portrait" src="assets/photo.jpg" alt="Portrait of Arunda Ishara with the sea behind him">
+            <span class="portrait-label" data-text="Curious by nature. Builder by choice.">Curious by nature. Builder by choice.</span>
+            <span class="portrait-code" aria-hidden="true"><span class="c-punct">&lt;</span><span class="c-tag">img</span> <span class="c-attr">src</span><span class="c-punct">=</span><span class="c-str squiggle">"arunda.jpg"</span><span class="c-punct">&gt;</span></span>
+          </div>
+          <div class="hero-actions">
+            <a class="button" href="#work">
+              Explore my work
+              <svg class="icon icon--lg" aria-hidden="true"><use href="#i-arrow-down-right"/></svg>
+            </a>
+            <a class="button secondary" href="assets/arunda-ishara-cv.pdf" download>
+              Download CV
+              <svg class="icon icon--lg" aria-hidden="true"><use href="#i-download"/></svg>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Ticker -->
     <div class="ticker" aria-label="Skills and interests">

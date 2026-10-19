@@ -42,3 +42,44 @@
     track.appendChild(clone);
   });
 })();
+
+/**
+ * Intro background: the faint code behind the hero starts out full of typos.
+ * While scrolling through the intro it drifts upward and the typos get fixed
+ * one by one (and come back if you scroll back up).
+ */
+(() => {
+  const intro = document.querySelector(".intro");
+  if (!intro) return;
+
+  const bugs = [...intro.querySelectorAll(".bug")];
+  bugs.forEach((bug) => {
+    bug.dataset.bad = bug.textContent;
+  });
+
+  let queued = false;
+
+  const update = () => {
+    queued = false;
+
+    const progress = Math.min(1, Math.max(0, window.scrollY / (intro.offsetHeight * 0.8)));
+    intro.style.setProperty("--p", progress.toFixed(3));
+
+    bugs.forEach((bug) => {
+      const fixed = progress >= parseFloat(bug.dataset.at);
+      if (fixed === bug.classList.contains("fixed")) return;
+      bug.classList.toggle("fixed", fixed);
+      bug.textContent = fixed ? bug.dataset.fix : bug.dataset.bad;
+    });
+  };
+
+  const queueUpdate = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", queueUpdate, { passive: true });
+  window.addEventListener("resize", queueUpdate);
+  update();
+})();
