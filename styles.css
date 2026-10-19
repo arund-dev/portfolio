@@ -108,27 +108,31 @@ button {
   justify-content: center;
   gap: 12px;
   padding: 14px 20px;
+  border: 1px solid #c8f16999;
   border-radius: 5px;
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: #c8f16920;
+  color: var(--accent);
   font-size: 13px;
   font-weight: 800;
-  transition: transform 0.2s, background 0.2s;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .button:hover {
   transform: translateY(-3px);
-  background: var(--accent-hover);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 .button.secondary {
-  background: transparent;
-  border: 1px solid var(--line);
+  border-color: #4b5144;
+  background: var(--panel-2);
   color: var(--ink);
 }
 
 .button.secondary:hover {
   border-color: var(--accent);
+  background: #c8f16914;
   color: var(--accent);
 }
 
@@ -230,8 +234,7 @@ header {
 }
 
 .eyebrow {
-  margin-bottom: 18px;
-  line-height: 1.9;
+  margin-bottom: 10px;
 }
 
 .dot {
@@ -254,17 +257,13 @@ header {
   text-transform: none;
 }
 
-/* Small decorative "<br>" tags */
-.code-tag {
+/* Small decorative "<br>" tag after the name */
+.hero h1 .code-tag {
   font-family: var(--mono);
+  font-size: clamp(12px, 1.6vw, 22px);
   font-weight: 400;
   letter-spacing: 0;
-  text-transform: none;
-  color: var(--accent);
-}
-
-.hero h1 .code-tag {
-  font-size: clamp(12px, 1.6vw, 22px);
+  color: #6a6e62;
   -webkit-text-stroke: 0;
 }
 
@@ -281,19 +280,28 @@ header {
   -webkit-text-stroke: 1px var(--ink);
 }
 
+.hero-im,
 .hero-copy {
-  max-width: 550px;
-  margin: 28px 0 0;
   color: var(--soft);
   font-size: clamp(17px, 1.7vw, 20px);
   line-height: 1.7;
 }
 
+.hero-im {
+  margin: 0 0 2px;
+}
+
+.hero-copy {
+  max-width: 550px;
+  margin: 28px 0 0;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  margin-top: 6px;
+  margin-top: 22px;
   padding-right: 22px; /* lines up with the photo, not its outline */
 }
 
@@ -345,7 +353,7 @@ header {
   position: absolute;
   z-index: 2;
   left: -20px;
-  right: -12px; /* reaches slightly past the green outline */
+  right: -6px; /* reaches just past the green outline */
   bottom: 52px;
   padding: 13px 17px;
   text-align: center;
@@ -355,33 +363,69 @@ header {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transform: rotate(-4deg);
+  animation: strip-glitch 5s steps(1, end) infinite;
+}
+
+/* Mostly still, with a quick glitch burst near the end of each cycle */
+@keyframes strip-glitch {
+  0%, 88%, 100% {
+    transform: rotate(-4deg);
+    clip-path: inset(0);
+    text-shadow: none;
+  }
+  89% {
+    transform: rotate(-4deg) translate(-3px, 1px) skewX(-8deg);
+    clip-path: inset(0 0 60% 0);
+    text-shadow: 2px 0 #ff2d6f, -2px 0 #2de2ff;
+  }
+  91% {
+    transform: rotate(-4deg) translate(4px, -1px) skewX(6deg);
+    clip-path: inset(55% 0 0 0);
+    text-shadow: -2px 0 #ff2d6f, 2px 0 #2de2ff;
+  }
+  93% {
+    transform: rotate(-4deg) translate(-2px, 0);
+    clip-path: inset(20% 0 30% 0);
+    text-shadow: 1px 0 #ff2d6f, -1px 0 #2de2ff;
+  }
+  95% {
+    transform: rotate(-4deg) translate(2px, 1px) skewX(-4deg);
+    clip-path: inset(0);
+    text-shadow: -2px 0 #2de2ff;
+  }
+  97% {
+    transform: rotate(-4deg);
+    clip-path: inset(0);
+    text-shadow: none;
+  }
 }
 
 /* Editor-style title: <img src="..."> with a VS Code error squiggle */
 .portrait-code {
   position: absolute;
   z-index: 2;
-  left: -18px;
-  top: -14px;
-  padding: 9px 13px;
+  left: -14px;
+  top: -10px;
+  padding: 6px 9px;
   border: 1px solid var(--line);
-  border-radius: 4px;
-  background: #1e1e1e;
-  box-shadow: 0 8px 24px #0006;
-  color: #d4d4d4;
-  font: 12px/1 var(--mono);
+  border-radius: 3px;
+  background: #1c1d1a;
+  box-shadow: 0 6px 18px #0005;
+  color: #8b8f84;
+  font: 10.5px/1 var(--mono);
   white-space: nowrap;
+  transform: rotate(-3deg);
 }
 
-.c-punct { color: #808080; }
-.c-tag   { color: #569cd6; }
-.c-attr  { color: #9cdcfe; }
-.c-str   { color: #ce9178; }
+.c-punct { color: #5f6358; }
+.c-tag   { color: #6f8aa6; }
+.c-attr  { color: #7f9aa8; }
+.c-str   { color: #a98577; }
 
 .squiggle {
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  text-decoration-color: #f14c4c;
+  text-decoration-color: #b85555;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
@@ -487,11 +531,25 @@ header {
   color: var(--ink);
 }
 
+.skills-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 38px 0 0;
+}
+
+.skills-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
-  margin-top: 34px;
+  margin-top: 16px;
 }
 
 .skill {
@@ -690,6 +748,21 @@ header {
   overflow: hidden;
   background: var(--accent);
   color: var(--accent-ink);
+}
+
+/* Faint decorative artwork (curves, strips, dots, small circles) */
+.contact-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--accent-ink);
+  pointer-events: none;
+}
+
+.contact-panel > div:first-of-type {
+  position: relative;
+  z-index: 1;
 }
 
 /* Decorative rings */
@@ -917,8 +990,7 @@ footer a:hover {
   }
 
   .hero-actions {
-    justify-content: center;
-    margin-top: 18px;
+    margin-top: 22px;
     padding-right: 0;
   }
 
