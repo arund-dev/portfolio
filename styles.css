@@ -161,6 +161,25 @@ header {
   border-bottom: 1px solid var(--line);
   background: rgba(17, 19, 16, 0.88);
   backdrop-filter: blur(18px);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Reading-progress line along the bottom of the header (--scroll set by main.js) */
+header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: calc(var(--scroll, 0) * 100%);
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px #c8f16988;
+}
+
+/* Once you leave the top: denser bar, smaller brand (height stays fixed so the page never jumps) */
+header.scrolled {
+  background: rgba(17, 19, 16, 0.95);
+  box-shadow: 0 10px 30px #0006;
 }
 
 .nav {
@@ -177,6 +196,11 @@ header {
   font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.04em;
+  transition: font-size 0.3s;
+}
+
+header.scrolled .brand {
+  font-size: 16px;
 }
 
 .brandmark {
@@ -189,6 +213,13 @@ header {
   color: var(--accent-ink);
   font-size: 15px;
   font-weight: 800;
+  transition: width 0.3s, height 0.3s, font-size 0.3s;
+}
+
+header.scrolled .brandmark {
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
 }
 
 .navlinks {
@@ -205,6 +236,43 @@ header {
 
 .navlinks a:hover {
   color: var(--accent);
+}
+
+/* Animated underline + "you are here" state for the section links */
+.navlinks a:not(.nav-cta) {
+  position: relative;
+  padding: 6px 0;
+}
+
+.navlinks a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.navlinks a:not(.nav-cta):hover::after,
+.navlinks a.active::after {
+  transform: scaleX(1);
+}
+
+.navlinks a.active {
+  color: var(--ink);
+}
+
+.navlinks .nav-cta.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.navlinks .nav-cta.active:hover {
+  color: var(--accent-ink);
 }
 
 .navlinks .nav-cta {
@@ -332,6 +400,10 @@ header {
 .portrait-wrap {
   position: relative;
   padding: 0 22px 24px 0;
+  /* gentle 3D tilt toward the pointer (--rx / --ry set by main.js, desktop only) */
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.35s ease-out;
+  will-change: transform;
 }
 
 .portrait-wrap::before {
@@ -340,6 +412,13 @@ header {
   inset: 24px 0 0 24px;
   z-index: 0;
   border: 1px solid #c8f16980;
+  animation: frame-glow 4.5s ease-in-out infinite;
+}
+
+/* The green outline slowly breathes */
+@keyframes frame-glow {
+  0%, 100% { border-color: #c8f16966; box-shadow: 0 0 0 transparent; }
+  50% { border-color: #c8f169cc; box-shadow: 0 0 26px #c8f16933, inset 0 0 20px #c8f16912; }
 }
 
 .portrait-frame {
@@ -348,6 +427,22 @@ header {
   overflow: hidden;
   aspect-ratio: 4 / 4.7;
   background: var(--panel);
+}
+
+/* A soft light sweep that passes over the photo every few seconds */
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, #ffffff1c 50%, transparent 62%);
+  transform: translateX(-120%);
+  animation: photo-sheen 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes photo-sheen {
+  0%, 62% { transform: translateX(-120%); }
+  86%, 100% { transform: translateX(120%); }
 }
 
 .portrait {
@@ -531,6 +626,16 @@ header {
   to   { background: transparent; }
 }
 
+/* Terminal line that types itself once every typo is fixed (main.js) */
+.hero-code .term {
+  color: #c8f1698a;
+}
+
+.hero-code .term::before {
+  content: "$ ";
+  color: #c8f16952;
+}
+
 .caret {
   display: inline-block;
   width: 8px;
@@ -606,6 +711,59 @@ header {
 
 .section-no {
   padding-top: 9px;
+}
+
+/* Rhythm: the section number draws a short line, then the title follows a beat later */
+.section-no::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  margin-top: 14px;
+  background: var(--accent);
+  transition: width 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s;
+}
+
+.section-head.visible .section-no::after {
+  width: 56px;
+}
+
+.section-head.reveal .section-title {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease 0.15s, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+}
+
+.section-head.reveal.visible .section-title {
+  opacity: 1;
+  transform: none;
+}
+
+/* Alternate section tone so the page has a beat: about (dark) / work (lifted) / contact (panel) */
+#work {
+  background: #141612;
+}
+
+/* Cards in a .stagger group rise one after another (main.js adds .visible) */
+.stagger > * {
+  opacity: 0;
+}
+
+.stagger.visible > * {
+  opacity: 1;
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.stagger.visible > :nth-child(1) { animation-delay: 0s; }
+.stagger.visible > :nth-child(2) { animation-delay: 0.08s; }
+.stagger.visible > :nth-child(3) { animation-delay: 0.16s; }
+.stagger.visible > :nth-child(4) { animation-delay: 0.24s; }
+.stagger.visible > :nth-child(5) { animation-delay: 0.32s; }
+.stagger.visible > :nth-child(6) { animation-delay: 0.4s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
 }
 
 .section-title {
@@ -1023,6 +1181,94 @@ header {
 }
 
 /* --------------------------------------------------------------------------
+   10b. "Currently" pop-up
+   -------------------------------------------------------------------------- */
+.now-card {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 350px;
+  padding: 14px 12px 14px 18px;
+  border: 1px solid #c8f16955;
+  border-radius: 14px;
+  background: rgba(25, 27, 23, 0.92);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px #000a, 0 0 0 4px #c8f16910;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px) scale(0.97);
+  transition: opacity 0.45s, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s 0.45s;
+}
+
+.now-card.show {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.now-dot {
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: now-pulse 2s ease-out infinite;
+}
+
+@keyframes now-pulse {
+  0% { box-shadow: 0 0 0 0 #c8f169aa; }
+  100% { box-shadow: 0 0 0 10px #c8f16900; }
+}
+
+.now-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.now-label {
+  font-size: 10px;
+  color: var(--accent);
+}
+
+.now-text {
+  color: var(--soft);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.now-text strong {
+  color: var(--ink);
+}
+
+.now-close {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.now-close:hover {
+  background: #ffffff12;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
    11. Footer
    -------------------------------------------------------------------------- */
 footer {
@@ -1323,6 +1569,13 @@ footer a:hover {
     flex-direction: column;
     gap: 8px;
   }
+
+  .now-card {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    max-width: none;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1337,8 +1590,14 @@ footer a:hover {
     transition: none !important;
   }
 
-  .reveal {
+  .reveal,
+  .section-head.reveal .section-title,
+  .stagger > * {
     opacity: 1;
+    transform: none;
+  }
+
+  .portrait-wrap {
     transform: none;
   }
 }
