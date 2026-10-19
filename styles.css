@@ -132,7 +132,7 @@ button {
   color: var(--accent);
 }
 
-/* Scroll-reveal (toggled by js/main.js) */
+/* Scroll-reveal (toggled by main.js) */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -230,18 +230,42 @@ header {
 }
 
 .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   margin-bottom: 18px;
+  line-height: 1.9;
 }
 
 .dot {
+  display: inline-block;
   width: 8px;
   height: 8px;
+  margin-right: 12px;
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 0 5px #c8f16918;
+  vertical-align: middle;
+}
+
+/* The ^_^ gets a narrower font than the monospace labels */
+.face {
+  font-family: var(--sans);
+  font-size: 1.2em;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Small decorative "<br>" tags */
+.code-tag {
+  font-family: var(--mono);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--accent);
+}
+
+.hero h1 .code-tag {
+  font-size: clamp(12px, 1.6vw, 22px);
+  -webkit-text-stroke: 0;
 }
 
 .hero h1 {
@@ -268,12 +292,13 @@ header {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 10px;
-  margin-top: 34px;
+  margin-top: 6px;
+  padding-right: 22px; /* lines up with the photo, not its outline */
 }
 
 .hero-actions .button {
+  flex: 1 1 auto;
   padding: 12px 15px;
   font-size: 12px;
 }
@@ -285,11 +310,14 @@ header {
 }
 
 /* Portrait */
-.portrait-wrap {
-  position: relative;
+.hero-visual {
   justify-self: end;
   width: 100%;
   max-width: 440px;
+}
+
+.portrait-wrap {
+  position: relative;
   padding: 0 22px 24px 0;
 }
 
@@ -317,8 +345,10 @@ header {
   position: absolute;
   z-index: 2;
   left: -20px;
+  right: -12px; /* reaches slightly past the green outline */
   bottom: 52px;
   padding: 13px 17px;
+  text-align: center;
   background: var(--accent);
   color: var(--accent-ink);
   font: 11px var(--mono);
@@ -327,18 +357,33 @@ header {
   transform: rotate(-4deg);
 }
 
-.portrait-index {
+/* Editor-style title: <img src="..."> with a VS Code error squiggle */
+.portrait-code {
   position: absolute;
-  z-index: 0;
-  left: -22px;
-  top: 12px;
-  padding: 9px 12px;
+  z-index: 2;
+  left: -18px;
+  top: -14px;
+  padding: 9px 13px;
   border: 1px solid var(--line);
-  background: var(--panel);
-  color: var(--accent);
-  font: 11px var(--mono);
-  letter-spacing: 0.1em;
+  border-radius: 4px;
+  background: #1e1e1e;
+  box-shadow: 0 8px 24px #0006;
+  color: #d4d4d4;
+  font: 12px/1 var(--mono);
   white-space: nowrap;
+}
+
+.c-punct { color: #808080; }
+.c-tag   { color: #569cd6; }
+.c-attr  { color: #9cdcfe; }
+.c-str   { color: #ce9178; }
+
+.squiggle {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #f14c4c;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
 /* --------------------------------------------------------------------------
@@ -373,7 +418,7 @@ header {
   line-height: 1;
 }
 
-/* Duplicate set added by js/main.js; only shown for the mobile marquee */
+/* Duplicate set added by main.js; only shown for the mobile marquee */
 .ticker-clone {
   display: none;
 }
@@ -763,6 +808,10 @@ footer a:hover {
     padding-right: 12px;
   }
 
+  .hero-actions {
+    padding-right: 12px;
+  }
+
   .portrait-wrap::before {
     inset: 16px 0 0 16px;
   }
@@ -858,23 +907,23 @@ footer a:hover {
     margin-top: 30px;
   }
 
-  .portrait-wrap {
+  .hero-visual {
     justify-self: center;
+  }
+
+  .portrait-wrap {
     width: 78%;
-    margin-top: 14px;
-    margin-right: 8px;
+    margin: 14px auto 0;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    margin-top: 18px;
+    padding-right: 0;
   }
 
   .portrait {
     aspect-ratio: 4 / 4.4;
-  }
-
-  .portrait-index {
-    left: -12px;
-    top: -22px;
-    z-index: 2;
-    padding: 7px 9px;
-    font-size: 10px;
   }
 
   /* Ticker scrolls on small screens */
