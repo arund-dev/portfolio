@@ -41,6 +41,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -879,6 +880,23 @@ header.scrolled .brandmark {
 .tip--right {
   left: auto;
   right: 0;
+}
+
+/* Hidden pop-ups still take up layout space, so the last column of each row opens leftwards from the start:
+   3rd column on desktop (3 columns) ... */
+@media (min-width: 801px) {
+  .skill:nth-child(3n) .tip {
+    left: auto;
+    right: 0;
+  }
+}
+
+/* ... and the 2nd column on tablets/phones (2 columns) */
+@media (max-width: 800px) {
+  .skill:nth-child(2n) .tip {
+    left: auto;
+    right: 0;
+  }
 }
 
 .tip--up {
