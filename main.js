@@ -152,8 +152,7 @@
 })();
 
 /**
- * Header: shrinks slightly after the top, shows a reading-progress line,
- * and highlights the link of the section you are in.
+ * Header: shrinks slightly after the top and highlights the link of the section you are in.
  */
 (() => {
   const header = document.querySelector("header");
@@ -173,7 +172,6 @@
     const max = document.documentElement.scrollHeight - window.innerHeight;
 
     header.classList.toggle("scrolled", y > 24);
-    header.style.setProperty("--scroll", max > 0 ? Math.min(1, y / max).toFixed(4) : "0");
 
     let current = null;
     targets.forEach((t) => {

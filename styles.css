@@ -164,18 +164,6 @@ header {
   transition: background 0.3s, box-shadow 0.3s;
 }
 
-/* Reading-progress line along the bottom of the header (--scroll set by main.js) */
-header::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  width: calc(var(--scroll, 0) * 100%);
-  height: 2px;
-  background: var(--accent);
-  box-shadow: 0 0 10px #c8f16988;
-}
-
 /* Once you leave the top: denser bar, smaller brand (height stays fixed so the page never jumps) */
 header.scrolled {
   background: rgba(17, 19, 16, 0.95);
@@ -327,16 +315,6 @@ header.scrolled .brandmark {
   color: var(--ink);
 }
 
-/* Small decorative "<br>" tag after the name */
-.hero h1 .code-tag {
-  font-family: var(--mono);
-  font-size: clamp(12px, 1.6vw, 22px);
-  font-weight: 400;
-  letter-spacing: 0;
-  color: #6a6e62;
-  -webkit-text-stroke: 0;
-}
-
 .hero h1 {
   margin: -0.06em 0 0; /* pulls the name (and everything under it) up toward "I'm" */
   font-size: clamp(64px, 10.5vw, 148px);
@@ -450,11 +428,10 @@ header.scrolled .brandmark {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* x below 50% shows more of the photo's left side, which pushes the subject right in the frame */
-  object-position: 32% 40%;
+  /* 0% = show the photo's far-left edge, which pushes the subject as far right in the frame as the
+     photo allows without leaving a gap. Raise it (e.g. 20%) to move the subject back toward the left. */
+  object-position: 0% 40%;
   filter: saturate(0.82);
-  /* barely any zoom: just enough to hide a hairline edge */
-  transform: scale(1.03) translateX(1.4%);
 }
 
 .portrait-label {
