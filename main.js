@@ -229,3 +229,56 @@
     hideTimer = setTimeout(hide, 12000);
   }, 2500);
 })();
+
+/**
+ * Skills: tap a box to open its small pop-up. Only one is open at a time;
+ * tapping anywhere else (or pressing Escape) closes it.
+ */
+(() => {
+  const skills = [...document.querySelectorAll(".skill")].filter((s) => s.querySelector(".skill-btn"));
+  if (!skills.length) return;
+
+  let current = null;
+
+  const close = (returnFocus) => {
+    if (!current) return;
+    const btn = current.querySelector(".skill-btn");
+    current.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+    if (returnFocus) btn.focus();
+    current = null;
+  };
+
+  const open = (skill) => {
+    close(false);
+    const tip = skill.querySelector(".tip");
+    tip.classList.remove("tip--right", "tip--up");
+
+    // keep the pop-up on screen: right-align near the right edge, flip above near the bottom
+    const r = skill.getBoundingClientRect();
+    if (r.left + tip.offsetWidth > window.innerWidth - 16) tip.classList.add("tip--right");
+    if (r.bottom + tip.offsetHeight + 20 > window.innerHeight && r.top > tip.offsetHeight + 20) {
+      tip.classList.add("tip--up");
+    }
+
+    skill.classList.add("open");
+    skill.querySelector(".skill-btn").setAttribute("aria-expanded", "true");
+    current = skill;
+  };
+
+  skills.forEach((skill) => {
+    skill.querySelector(".skill-btn").addEventListener("click", () => {
+      if (skill === current) close(false);
+      else open(skill);
+    });
+  });
+
+  // pointerdown (not click) so it also works for taps on empty areas in iOS Safari
+  document.addEventListener("pointerdown", (e) => {
+    if (current && !current.contains(e.target)) close(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close(true);
+  });
+})();
