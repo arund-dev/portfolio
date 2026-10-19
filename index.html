@@ -3,184 +3,180 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arunda Ishara – Portfolio</title>
-<meta name="description" content="Arunda Ishara from Galle, Sri Lanka. Builds and ships apps with AI tools. Open to entry-level roles.">
+<title>Arunda Ishara</title>
+<meta name="description" content="Arunda Ishara from Galle, Sri Lanka. I build apps with AI tools. Open to entry-level roles.">
+<meta property="og:title" content="Arunda Ishara">
+<meta property="og:description" content="I build apps with AI tools. Open to entry-level roles.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f6f8;--surface:#ffffff;--ink:#16171d;--mute:#5d6170;--line:#dcdee5;--acc:#5b3df0;--acc-ink:#ffffff;
+:root{--bg:#f5f6f8;--surface:#fff;--ink:#16171d;--mute:#5d6170;--line:#dcdee5;--acc:#5b3df0;--acc-ink:#fff;--glow:rgba(91,61,240,.22);
 --hf:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--bf:"DM Sans","Segoe UI",system-ui,sans-serif}
-:root[data-theme="dark"]{--bg:#12131a;--surface:#1b1c26;--ink:#eceef5;--mute:#a0a4b8;--line:#2d2f3f;--acc:#a58bff;--acc-ink:#12131a}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12131a;--surface:#1b1c26;--ink:#eceef5;--mute:#a0a4b8;--line:#2d2f3f;--acc:#a58bff;--acc-ink:#12131a}}
+:root[data-theme="dark"]{--bg:#12131a;--surface:#1b1c26;--ink:#eceef5;--mute:#a0a4b8;--line:#2d2f3f;--acc:#a58bff;--acc-ink:#12131a;--glow:rgba(165,139,255,.2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12131a;--surface:#1b1c26;--ink:#eceef5;--mute:#a0a4b8;--line:#2d2f3f;--acc:#a58bff;--acc-ink:#12131a;--glow:rgba(165,139,255,.2)}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--bf);font-size:17px;line-height:1.6}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--bf);font-size:17px;line-height:1.6;display:grid;grid-template-columns:minmax(300px,38%) 1fr;min-height:100vh}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:4px}
-.wrap{max-width:900px;margin:0 auto;padding:0 24px}
-header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
-nav{display:flex;gap:22px;font-size:15px}
-nav a{text-decoration:none;color:var(--mute)}
-nav a:hover{color:var(--ink)}
-#theme{font:inherit;font-size:15px;background:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
+h1,h2{font-family:var(--hf);line-height:1.05;margin:0}
+
+/* left: photo */
+aside{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden;background:var(--surface);border-right:1px solid var(--line);--mx:50%;--my:40%}
+aside::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx) var(--my),var(--glow),transparent 70%)}
+.frame{position:relative;width:min(72%,340px);animation:float 7s ease-in-out infinite}
+.frame::before{content:"";position:absolute;inset:-22px;border:2px dashed var(--acc);border-radius:50%;opacity:.35;animation:spin 40s linear infinite}
+.photo{position:relative;display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:999px 999px 28px 28px;border:3px solid var(--acc);transform:translate(var(--tx,0),var(--ty,0));transition:transform .25s ease-out}
+.badge{position:absolute;right:-14px;bottom:26px;background:var(--acc);color:var(--acc-ink);font-size:14px;font-weight:500;padding:6px 14px;border-radius:999px;box-shadow:0 6px 18px var(--glow)}
+
+/* right */
+.right{display:flex;flex-direction:column;min-height:100vh;padding:24px clamp(24px,5vw,72px)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tabs{position:relative;display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.tabs button{position:relative;z-index:1;font:inherit;font-size:15px;font-weight:500;background:none;border:0;color:var(--mute);padding:7px 18px;border-radius:999px;cursor:pointer;transition:color .25s}
+.tabs button[aria-selected="true"]{color:var(--acc-ink)}
+.tabs button:not([aria-selected="true"]):hover{color:var(--ink)}
+.pill{position:absolute;z-index:0;top:4px;bottom:4px;left:0;border-radius:999px;background:var(--acc);transition:transform .35s cubic-bezier(.5,1.4,.5,1),width .35s}
+#theme{font:inherit;font-size:15px;background:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;transition:border-color .2s}
 #theme:hover{border-color:var(--acc)}
-h1,h2,h3{font-family:var(--hf);line-height:1.1;margin:0}
-.hero{display:grid;grid-template-columns:1fr 220px;gap:48px;align-items:center;padding:56px 0 72px}
-h1{font-size:clamp(46px,8vw,84px);font-weight:700;letter-spacing:-.03em}
-.hero p.lead{font-size:clamp(19px,2.4vw,23px);max-width:30em;margin:22px 0 28px}
-.hero p.meta{color:var(--mute);margin:0 0 28px;font-size:15px}
-.btns{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-block;text-decoration:none;font-weight:500;border-radius:10px;padding:12px 20px;border:1px solid var(--line);background:var(--surface)}
-.btn.p{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
-.btn:hover{transform:translateY(-2px)}
-.btn{transition:transform .15s}
-.photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid var(--acc)}
-section{padding:56px 0;border-top:1px solid var(--line)}
-h2{font-size:clamp(28px,4vw,38px);font-weight:700;letter-spacing:-.02em;margin-bottom:28px}
-.proj-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;align-items:baseline;margin-bottom:12px}
-.proj-head h3{font-size:30px}
-.proj p{max-width:40em;margin:0 0 14px}
-.facts{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:8px;max-width:40em}
-.facts li{padding-left:22px;position:relative}
-.facts li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:2px;background:var(--acc)}
-.shots{display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start}
-.shots img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
-.shots .col{display:grid;gap:16px}
-.cap{color:var(--mute);font-size:14px;margin-top:12px}
-.note{border-left:3px solid var(--acc);padding:2px 0 2px 16px;color:var(--mute);max-width:40em;margin-top:24px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
-.chips li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px}
-h3.sub{font-size:20px;margin-bottom:14px}
-.role h3{font-size:22px}
-.role p{margin:6px 0 0;max-width:38em}
-.role .when{color:var(--mute);font-size:15px;margin:0}
-.contact a.big{font-family:var(--hf);font-size:clamp(24px,4.5vw,40px);font-weight:700;letter-spacing:-.02em;text-decoration:none;border-bottom:3px solid var(--acc);word-break:break-all}
-.contact p{margin:20px 0 0}
-footer{padding:36px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
-@media (max-width:700px){
-.hero{grid-template-columns:1fr;padding-top:24px}
-.photo{width:150px;order:-1}
-.shots,.two{grid-template-columns:1fr}
-.shots .col{grid-template-columns:1fr}
-nav{display:none}
+main{flex:1;display:flex;align-items:center;padding:32px 0;max-width:720px}
+.panel{width:100%}
+.panel:not([hidden])>*{animation:up .55s cubic-bezier(.2,.7,.2,1) both}
+.panel>:nth-child(2){animation-delay:.07s!important}.panel>:nth-child(3){animation-delay:.14s!important}.panel>:nth-child(4){animation-delay:.21s!important}.panel>:nth-child(5){animation-delay:.28s!important}
+
+h1{font-size:clamp(44px,6.5vw,76px);font-weight:700;letter-spacing:-.03em}
+h1 span{color:var(--acc)}
+.lead{font-size:clamp(18px,2vw,21px);max-width:28em;margin:20px 0 14px}
+.meta{color:var(--mute);font-size:15px;margin:0 0 22px}
+.chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 14px;font-size:15px;transition:transform .2s,border-color .2s}
+.chips li:hover{transform:translateY(-3px);border-color:var(--acc)}
+
+.wh{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-bottom:10px}
+h2{font-size:clamp(30px,4vw,42px);font-weight:700;letter-spacing:-.02em}
+.tag{font-size:13px;font-weight:500;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:2px 12px}
+.live{margin-left:auto;font-weight:500;text-decoration:none;border-bottom:2px solid var(--acc)}
+.live:hover{color:var(--acc)}
+.desc{max-width:34em;margin:0 0 22px}
+.shots{--h:clamp(230px,40vh,330px);display:flex;gap:12px;align-items:flex-start}
+.shots img{display:block;height:var(--h);width:auto;max-width:100%;border-radius:12px;border:1px solid var(--line);background:var(--surface);transition:transform .3s,box-shadow .3s}
+.shots .col{display:grid;gap:12px}
+.shots .col img{height:calc((var(--h) - 12px)/2)}
+.shots img:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 14px 30px var(--glow)}
+
+.mail{font-family:var(--hf);font-size:clamp(22px,4vw,38px);font-weight:700;letter-spacing:-.02em;text-decoration:none;border-bottom:3px solid var(--acc);word-break:break-all;transition:color .2s}
+.mail:hover{color:var(--acc)}
+.phone{margin:18px 0 24px}
+.btn{display:inline-block;text-decoration:none;font-weight:500;border-radius:10px;padding:11px 20px;background:var(--acc);color:var(--acc-ink);transition:transform .15s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px var(--glow)}
+footer{color:var(--mute);font-size:14px}
+
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media (max-width:860px){
+body{display:block}
+aside{position:relative;height:auto;padding:36px 0 30px;border-right:0;border-bottom:1px solid var(--line)}
+.frame{width:150px}.frame::before{inset:-14px}
+.right{min-height:0}
+main{padding:28px 0}
+.shots{flex-wrap:wrap}
+.live{margin-left:0}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <nav aria-label="Sections">
-    <a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
-  </nav>
-  <button id="theme" type="button" aria-label="Switch between dark and light theme">Dark / Light</button>
-</header>
-
-<main>
-<div class="hero">
-  <div>
-    <h1>Arunda Ishara</h1>
-    <p class="lead">I learn fast and build things that work. I made a social app for people who share interests, and a few friends use it every day.</p>
-    <p class="meta">Galle, Sri Lanka. Open to entry-level roles in tech, digital work and coordination.</p>
-    <div class="btns">
-      <a class="btn p" href="assets/Arunda_Ishara_CV.pdf" download>Download CV</a>
-      <a class="btn" href="#contact">Get in touch</a>
-    </div>
+<aside id="side">
+  <div class="frame">
+    <img class="photo" id="photo" src="assets/photo.jpg" alt="Portrait of Arunda Ishara smiling, with the sea behind him">
+    <span class="badge">Galle, Sri Lanka</span>
   </div>
-  <img class="photo" src="assets/photo.jpg" alt="Portrait of Arunda Ishara smiling, with the sea behind him">
-</div>
+</aside>
 
-<section id="work" class="proj">
-  <div class="proj-head">
-    <h3>iLike</h3>
-    <a href="https://ilike.ilike-team789.workers.dev/" target="_blank" rel="noopener">Open the live app</a>
-  </div>
-  <p>An installable social app where people find others who share their interests. Users build a profile, pick interests, follow people, post photos, join interest circles and chat.</p>
-  <ul class="facts">
-    <li>Live today, with a small group of friends posting in it regularly.</li>
-    <li>Works as an app on your phone's home screen, offline-ready, with optional push notifications.</li>
-    <li>Includes things real products need: invite-only sign-up, moderation tools for admins, spam limits and a retry button when a post fails.</li>
-    <li>Built in about 20 hours with AI tools. I wrote the plan, directed the build, tested it on my phone and fixed what broke.</li>
-    <li>Next step: publish it on the Play Store and App Store.</li>
-  </ul>
-  <div class="shots">
-    <img src="assets/ilike-profile.jpg" alt="iLike profile screen on a phone, showing interests and artists" loading="lazy">
-    <div class="col">
-      <img src="assets/ilike-desktop.jpg" alt="iLike profile on desktop with a post and photos" loading="lazy">
-      <img src="assets/ilike-circles.jpg" alt="iLike interest circles list on desktop" loading="lazy">
+<div class="right">
+  <div class="top">
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <span class="pill" id="pill"></span>
+      <button role="tab" id="t-about" aria-controls="about" aria-selected="true">About</button>
+      <button role="tab" id="t-works" aria-controls="works" aria-selected="false" tabindex="-1">Works</button>
+      <button role="tab" id="t-contact" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</button>
     </div>
+    <button id="theme" type="button" aria-label="Switch between dark and light theme">Dark / Light</button>
   </div>
-  <p class="cap">Phone and desktop views of the same app.</p>
-</section>
 
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="two">
-    <div>
-      <h3 class="sub">Digital</h3>
-      <ul class="chips">
-        <li>Building apps with AI tools</li><li>Basic web design</li><li>Word, Excel, PowerPoint</li><li>Online research</li><li>Email management</li><li>Data entry and record keeping</li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="sub">Working with people</h3>
-      <ul class="chips">
-        <li>Program coordination</li><li>Teamwork</li><li>Time management</li><li>Problem-solving</li><li>Attention to detail</li><li>Learns quickly</li>
-      </ul>
-    </div>
-  </div>
-  <p class="note">I work with AI tools every day and say so openly. What I add is the thinking around them: what to build, what to ask for, and checking that the result works.</p>
-</section>
+  <main>
+    <section class="panel" id="about" role="tabpanel" aria-labelledby="t-about">
+      <h1>Arunda <span>Ishara</span></h1>
+      <p class="lead">I build apps with AI tools, test them on my own phone, and keep going until they work.</p>
+      <p class="meta">Based in Galle. Open to entry-level roles. Sinhala, English, Tamil.</p>
+      <ul class="chips"><li>Building with AI</li><li>Basic web design</li><li>Word, Excel, PowerPoint</li><li>Online research</li><li>Teamwork</li></ul>
+    </section>
 
-<section id="experience">
-  <h2>Experience</h2>
-  <div class="role">
-    <h3>Treasurer and concept artist, school web team</h3>
-    <p class="when">St. Aloysius College, Galle</p>
-    <p>Designed team shirts, social media posts and the structure of videos, and served as the team's treasurer.</p>
-  </div>
-</section>
+    <section class="panel" id="works" role="tabpanel" aria-labelledby="t-works" hidden>
+      <div class="wh"><h2>iLike</h2><span class="tag">Built with AI</span><a class="live" href="https://ilike.ilike-team789.workers.dev/" target="_blank" rel="noopener">Open live app ↗</a></div>
+      <p class="desc">A social app where people find others who share their interests. Profiles, interest circles, photo posts and chat, and it installs on your phone like any other app.</p>
+      <div class="shots">
+        <img src="assets/ilike-profile.jpg" alt="iLike profile screen on a phone, showing interests and artists" width="520" height="1126">
+        <div class="col">
+          <img src="assets/ilike-desktop.jpg" alt="iLike profile on desktop with a post and photos" width="1280" height="673">
+          <img src="assets/ilike-circles.jpg" alt="iLike interest circles list on desktop" width="1280" height="673">
+        </div>
+      </div>
+    </section>
 
-<section>
-  <h2>Education and languages</h2>
-  <div class="two">
-    <div>
-      <h3 class="sub">Education</h3>
-      <p style="margin:0 0 10px">G.C.E. Advanced Level, Physical Science stream<br><span style="color:var(--mute)">St. Aloysius College, Galle</span></p>
-      <p style="margin:0">English language course, B1<br><span style="color:var(--mute)">British Council</span></p>
-    </div>
-    <div>
-      <h3 class="sub">Languages</h3>
-      <ul class="chips"><li>Sinhala (native)</li><li>English</li><li>Tamil (conversational)</li></ul>
-    </div>
-  </div>
-</section>
+    <section class="panel" id="contact" role="tabpanel" aria-labelledby="t-contact" hidden>
+      <h2 style="margin-bottom:20px">Say hello</h2>
+      <a class="mail" href="mailto:arunishara530@gmail.com">arunishara530@gmail.com</a>
+      <p class="phone"><a href="tel:+94742547118">+94 74 254 7118</a></p>
+      <a class="btn" href="assets/Arunda_Ishara_CV.pdf" download>Download CV</a>
+    </section>
+  </main>
 
-<section id="contact" class="contact">
-  <h2>Contact</h2>
-  <a class="big" href="mailto:arunishara530@gmail.com">arunishara530@gmail.com</a>
-  <p>Phone: <a href="tel:+94742547118">+94 74 254 7118</a></p>
-  <p>References available on request.</p>
-</section>
-</main>
-
-<footer>
-  <div>Arunda Ishara, Galle, Sri Lanka</div>
-</footer>
+  <footer>© 2026 Arunda Ishara</footer>
 </div>
 
 <script>
 (function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]')),pill=document.getElementById('pill');
+  function place(){var t=tabs.filter(function(b){return b.getAttribute('aria-selected')==='true'})[0];
+    pill.style.width=t.offsetWidth+'px';pill.style.transform='translateX('+t.offsetLeft+'px)'}
+  function show(b,focus){
+    tabs.forEach(function(t){var on=t===b;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden=!on});
+    place();if(focus)b.focus();
+    try{history.replaceState(null,'','#'+b.getAttribute('aria-controls'))}catch(e){}
+  }
+  tabs.forEach(function(b,i){
+    b.addEventListener('click',function(){show(b)});
+    b.addEventListener('keydown',function(e){
+      var n=e.key==='ArrowRight'?i+1:e.key==='ArrowLeft'?i-1:null;
+      if(n===null)return;e.preventDefault();show(tabs[(n+tabs.length)%tabs.length],true)});
+  });
+  var h=location.hash.slice(1),start=tabs.filter(function(t){return t.getAttribute('aria-controls')===h})[0];
+  if(start)show(start);else place();
+  window.addEventListener('resize',place);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(place);
+
   var root=document.documentElement,btn=document.getElementById('theme');
   try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
   btn.addEventListener('click',function(){
     var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-    var next=cur==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
+    var next=cur==='dark'?'light':'dark';root.setAttribute('data-theme',next);
     try{localStorage.setItem('theme',next)}catch(e){}
   });
+
+  var side=document.getElementById('side');
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+    side.addEventListener('mousemove',function(e){
+      var r=side.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      side.style.setProperty('--mx',x*100+'%');side.style.setProperty('--my',y*100+'%');
+      side.style.setProperty('--tx',(x-.5)*14+'px');side.style.setProperty('--ty',(y-.5)*14+'px');
+    });
+    side.addEventListener('mouseleave',function(){side.style.setProperty('--tx','0px');side.style.setProperty('--ty','0px')});
+  }
 })();
 </script>
 </body>
