@@ -26,3 +26,19 @@
 
   items.forEach((item) => observer.observe(item));
 })();
+
+/**
+ * Ticker: append a duplicate set of items so the mobile marquee
+ * can loop without a visible jump (hidden on larger screens via CSS).
+ */
+(() => {
+  const track = document.querySelector(".ticker-track");
+  if (!track) return;
+
+  [...track.children].forEach((item) => {
+    const clone = item.cloneNode(true);
+    clone.classList.add("ticker-clone");
+    clone.setAttribute("aria-hidden", "true");
+    track.appendChild(clone);
+  });
+})();

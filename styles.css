@@ -233,7 +233,7 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .dot {
@@ -246,9 +246,9 @@ header {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(56px, 8vw, 112px);
+  font-size: clamp(64px, 10.5vw, 148px);
   font-weight: 700;
-  line-height: 0.98;
+  line-height: 0.95;
   letter-spacing: -0.085em;
 }
 
@@ -265,11 +265,6 @@ header {
   line-height: 1.7;
 }
 
-.hero-copy strong {
-  color: var(--ink);
-  font-weight: 600;
-}
-
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -284,17 +279,9 @@ header {
 }
 
 .hero-note {
-  display: flex;
-  align-items: center;
-  gap: 22px;
   margin-top: 42px;
   font-size: 12px;
   color: var(--muted);
-}
-
-.hero-note span + span {
-  padding-left: 22px;
-  border-left: 1px solid var(--line);
 }
 
 /* Portrait */
@@ -386,9 +373,14 @@ header {
   line-height: 1;
 }
 
+/* Duplicate set added by js/main.js; only shown for the mobile marquee */
+.ticker-clone {
+  display: none;
+}
+
 @keyframes marquee {
   to {
-    transform: translateX(-30%);
+    transform: translateX(-50%);
   }
 }
 
@@ -764,7 +756,7 @@ footer a:hover {
   }
 
   .hero h1 {
-    font-size: clamp(52px, 9vw, 84px);
+    font-size: clamp(60px, 12vw, 104px);
   }
 
   .portrait-wrap {
@@ -854,7 +846,7 @@ footer a:hover {
   }
 
   .hero h1 {
-    font-size: clamp(58px, 16vw, 88px);
+    font-size: clamp(64px, 22vw, 110px);
   }
 
   .hero-copy {
@@ -863,13 +855,7 @@ footer a:hover {
   }
 
   .hero-note {
-    flex-wrap: wrap;
-    gap: 12px;
     margin-top: 30px;
-  }
-
-  .hero-note span + span {
-    padding-left: 12px;
   }
 
   .portrait-wrap {
@@ -900,11 +886,16 @@ footer a:hover {
     justify-content: flex-start;
     gap: 25px;
     width: max-content;
-    animation: marquee 24s linear infinite;
+    padding-right: 25px; /* equals the gap, so the -50% loop is seamless */
+    animation: marquee 30s linear infinite;
   }
 
   .ticker-track span {
     flex-shrink: 0;
+  }
+
+  .ticker-clone {
+    display: block;
   }
 
   /* Sections */
