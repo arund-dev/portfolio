@@ -316,7 +316,7 @@ header.scrolled .brandmark {
 .hero-im {
   margin: 0;
   color: var(--soft);
-  font-size: clamp(21px, 2.2vw, 27px);
+  font-size: clamp(17px, 1.7vw, 21px);
   line-height: 1.3;
 }
 
@@ -845,10 +845,6 @@ header.scrolled .brandmark {
   outline-offset: 2px;
 }
 
-.skills-hint {
-  color: #6a6e62;
-}
-
 /* Small pop-up that opens under (or over) the tapped skill; main.js keeps only one open */
 .tip {
   position: absolute;
@@ -856,7 +852,8 @@ header.scrolled .brandmark {
   left: 0;
   top: calc(100% + 10px);
   width: min(290px, calc(100vw - 40px));
-  padding: 14px 16px;
+  padding: 14px 16px 42px;
+  overflow: hidden;
   border: 1px solid #c8f16966;
   border-radius: 10px;
   background: #0f110e;
@@ -890,62 +887,33 @@ header.scrolled .brandmark {
 }
 
 .about-copy .tip p {
+  position: relative;
+  z-index: 1;
   margin: 0;
 }
 
-.tip-code {
-  display: block;
-  margin-top: 10px;
-  padding: 8px 10px;
-  border-left: 2px solid var(--accent);
-  border-radius: 0 4px 4px 0;
-  background: #0a0b09;
-  color: var(--muted);
-  font: 11.5px/1.6 var(--mono);
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.tip-code .bad {
-  color: #ff8a8a;
-  text-decoration: underline wavy #ff787899 1px;
-  text-underline-offset: 3px;
-}
-
-.tip-code .ok {
+/* Faint code snippet as decoration in the corner of the pop-up (text comes from data-code) */
+.tip::after {
+  content: attr(data-code);
+  position: absolute;
+  right: 12px;
+  bottom: 9px;
   color: var(--accent);
+  opacity: 0.2;
+  font: 11px/1.5 var(--mono);
+  text-align: right;
+  white-space: pre;
+  pointer-events: none;
 }
 
-.tip-code .dim {
-  color: #7d8174;
-}
-
-/* "How I build": four steps on a line */
+/* "How I build": four plain steps */
 .how {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   padding: 0;
   list-style: none;
-}
-
-.how li {
-  position: relative;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-}
-
-.how li::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 0;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px #c8f16918;
 }
 
 .how .num {
@@ -954,7 +922,7 @@ header.scrolled .brandmark {
 }
 
 .how h4 {
-  margin: 8px 0 6px;
+  margin: 6px 0 4px;
   color: var(--ink);
   font-size: 15px;
   letter-spacing: -0.02em;
@@ -964,7 +932,7 @@ header.scrolled .brandmark {
   margin: 0;
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 /* --------------------------------------------------------------------------
@@ -1187,14 +1155,14 @@ header.scrolled .brandmark {
 .art-bar--a { left: 30%; top: -3%; height: 90px; transform: rotate(30deg); }
 .art-bar--b { left: 47%; bottom: -4%; height: 70px; transform: rotate(-28deg); }
 
-.art-dots {
-  background-image: radial-gradient(circle, currentColor 1.4px, transparent 1.8px);
-  background-size: 18px 18px;
-  opacity: 0.16;
+/* A few thin diagonal lines (replaces the dot grids, which read like stray full stops) */
+.art-lines {
+  background-image: repeating-linear-gradient(135deg, currentColor 0 1.2px, transparent 1.2px 14px);
+  opacity: 0.14;
 }
 
-.art-dots--a { left: 2%; top: 52%; width: 126px; height: 72px; }
-.art-dots--b { left: 62%; top: 8%; width: 108px; height: 72px; }
+.art-lines--a { left: -1%; bottom: -4%; width: 150px; height: 64px; }
+.art-lines--b { right: 20%; top: -3%; width: 110px; height: 54px; }
 
 .art-ring {
   border: 1.2px solid currentColor;
