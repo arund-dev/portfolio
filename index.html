@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arunda Ishara – Portfolio</title>
+<meta name="description" content="Arunda Ishara from Galle, Sri Lanka. Builds and ships apps with AI tools. Open to entry-level roles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f6f8;--surface:#ffffff;--ink:#16171d;--mute:#5d6170;--line:#dcdee5;--acc:#5b3df0;--acc-ink:#ffffff;
+--hf:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--bf:"DM Sans","Segoe UI",system-ui,sans-serif}
+:root[data-theme="dark"]{--bg:#12131a;--surface:#1b1c26;--ink:#eceef5;--mute:#a0a4b8;--line:#2d2f3f;--acc:#a58bff;--acc-ink:#12131a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12131a;--surface:#1b1c26;--ink:#eceef5;--mute:#a0a4b8;--line:#2d2f3f;--acc:#a58bff;--acc-ink:#12131a}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--bf);font-size:17px;line-height:1.6}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:4px}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+nav{display:flex;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:var(--mute)}
+nav a:hover{color:var(--ink)}
+#theme{font:inherit;font-size:15px;background:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+#theme:hover{border-color:var(--acc)}
+h1,h2,h3{font-family:var(--hf);line-height:1.1;margin:0}
+.hero{display:grid;grid-template-columns:1fr 220px;gap:48px;align-items:center;padding:56px 0 72px}
+h1{font-size:clamp(46px,8vw,84px);font-weight:700;letter-spacing:-.03em}
+.hero p.lead{font-size:clamp(19px,2.4vw,23px);max-width:30em;margin:22px 0 28px}
+.hero p.meta{color:var(--mute);margin:0 0 28px;font-size:15px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;font-weight:500;border-radius:10px;padding:12px 20px;border:1px solid var(--line);background:var(--surface)}
+.btn.p{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.btn:hover{transform:translateY(-2px)}
+.btn{transition:transform .15s}
+.photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid var(--acc)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,4vw,38px);font-weight:700;letter-spacing:-.02em;margin-bottom:28px}
+.proj-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;align-items:baseline;margin-bottom:12px}
+.proj-head h3{font-size:30px}
+.proj p{max-width:40em;margin:0 0 14px}
+.facts{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:8px;max-width:40em}
+.facts li{padding-left:22px;position:relative}
+.facts li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:2px;background:var(--acc)}
+.shots{display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:start}
+.shots img{width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);background:var(--surface)}
+.shots .col{display:grid;gap:16px}
+.cap{color:var(--mute);font-size:14px;margin-top:12px}
+.note{border-left:3px solid var(--acc);padding:2px 0 2px 16px;color:var(--mute);max-width:40em;margin-top:24px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+.chips li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px}
+h3.sub{font-size:20px;margin-bottom:14px}
+.role h3{font-size:22px}
+.role p{margin:6px 0 0;max-width:38em}
+.role .when{color:var(--mute);font-size:15px;margin:0}
+.contact a.big{font-family:var(--hf);font-size:clamp(24px,4.5vw,40px);font-weight:700;letter-spacing:-.02em;text-decoration:none;border-bottom:3px solid var(--acc);word-break:break-all}
+.contact p{margin:20px 0 0}
+footer{padding:36px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:700px){
+.hero{grid-template-columns:1fr;padding-top:24px}
+.photo{width:150px;order:-1}
+.shots,.two{grid-template-columns:1fr}
+.shots .col{grid-template-columns:1fr}
+nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <nav aria-label="Sections">
+    <a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+  </nav>
+  <button id="theme" type="button" aria-label="Switch between dark and light theme">Dark / Light</button>
+</header>
+
+<main>
+<div class="hero">
+  <div>
+    <h1>Arunda Ishara</h1>
+    <p class="lead">I learn fast and build things that work. I made a social app for people who share interests, and a few friends use it every day.</p>
+    <p class="meta">Galle, Sri Lanka. Open to entry-level roles in tech, digital work and coordination.</p>
+    <div class="btns">
+      <a class="btn p" href="assets/Arunda_Ishara_CV.pdf" download>Download CV</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <img class="photo" src="assets/photo.jpg" alt="Portrait of Arunda Ishara smiling, with the sea behind him">
+</div>
+
+<section id="work" class="proj">
+  <div class="proj-head">
+    <h3>iLike</h3>
+    <a href="https://ilike.ilike-team789.workers.dev/" target="_blank" rel="noopener">Open the live app</a>
+  </div>
+  <p>An installable social app where people find others who share their interests. Users build a profile, pick interests, follow people, post photos, join interest circles and chat.</p>
+  <ul class="facts">
+    <li>Live today, with a small group of friends posting in it regularly.</li>
+    <li>Works as an app on your phone's home screen, offline-ready, with optional push notifications.</li>
+    <li>Includes things real products need: invite-only sign-up, moderation tools for admins, spam limits and a retry button when a post fails.</li>
+    <li>Built in about 20 hours with AI tools. I wrote the plan, directed the build, tested it on my phone and fixed what broke.</li>
+    <li>Next step: publish it on the Play Store and App Store.</li>
+  </ul>
+  <div class="shots">
+    <img src="assets/ilike-profile.jpg" alt="iLike profile screen on a phone, showing interests and artists" loading="lazy">
+    <div class="col">
+      <img src="assets/ilike-desktop.jpg" alt="iLike profile on desktop with a post and photos" loading="lazy">
+      <img src="assets/ilike-circles.jpg" alt="iLike interest circles list on desktop" loading="lazy">
+    </div>
+  </div>
+  <p class="cap">Phone and desktop views of the same app.</p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="two">
+    <div>
+      <h3 class="sub">Digital</h3>
+      <ul class="chips">
+        <li>Building apps with AI tools</li><li>Basic web design</li><li>Word, Excel, PowerPoint</li><li>Online research</li><li>Email management</li><li>Data entry and record keeping</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="sub">Working with people</h3>
+      <ul class="chips">
+        <li>Program coordination</li><li>Teamwork</li><li>Time management</li><li>Problem-solving</li><li>Attention to detail</li><li>Learns quickly</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">I work with AI tools every day and say so openly. What I add is the thinking around them: what to build, what to ask for, and checking that the result works.</p>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="role">
+    <h3>Treasurer and concept artist, school web team</h3>
+    <p class="when">St. Aloysius College, Galle</p>
+    <p>Designed team shirts, social media posts and the structure of videos, and served as the team's treasurer.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Education and languages</h2>
+  <div class="two">
+    <div>
+      <h3 class="sub">Education</h3>
+      <p style="margin:0 0 10px">G.C.E. Advanced Level, Physical Science stream<br><span style="color:var(--mute)">St. Aloysius College, Galle</span></p>
+      <p style="margin:0">English language course, B1<br><span style="color:var(--mute)">British Council</span></p>
+    </div>
+    <div>
+      <h3 class="sub">Languages</h3>
+      <ul class="chips"><li>Sinhala (native)</li><li>English</li><li>Tamil (conversational)</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <a class="big" href="mailto:arunishara530@gmail.com">arunishara530@gmail.com</a>
+  <p>Phone: <a href="tel:+94742547118">+94 74 254 7118</a></p>
+  <p>References available on request.</p>
+</section>
+</main>
+
+<footer>
+  <div>Arunda Ishara, Galle, Sri Lanka</div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next)}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
