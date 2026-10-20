@@ -308,3 +308,36 @@
     window.addEventListener(evt, cancel, { passive: true })
   );
 })();
+
+
+/**
+ * Desktop: hovering the outlined name makes it flash a typo ("Isahra") that
+ * gets fixed while the lime strip runs across it, like the hero code.
+ */
+(() => {
+  const word = document.querySelector(".hero h1 .outline");
+  if (!word) return;
+  if (!window.matchMedia("(min-width: 801px) and (hover: hover) and (pointer: fine)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const good = word.dataset.text || word.textContent;
+  const bad = "Isahra";
+  let busy = false;
+
+  const set = (text) => {
+    word.textContent = text;
+    word.dataset.text = text;
+  };
+
+  word.addEventListener("pointerenter", () => {
+    if (busy) return;
+    busy = true;
+    word.style.width = word.offsetWidth + "px"; // keep the dot and tag from jumping
+    set(bad);
+    setTimeout(() => {
+      set(good);
+      word.style.width = "";
+      busy = false;
+    }, 380);
+  });
+})();
