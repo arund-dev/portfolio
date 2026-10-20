@@ -917,7 +917,7 @@ header.scrolled .brandmark {
   right: 12px;
   bottom: 9px;
   color: var(--accent);
-  opacity: 0.2;
+  opacity: 0.5; /* was 0.2: same green, just brighter */
   font: 11px/1.5 var(--mono);
   text-align: right;
   white-space: pre;
@@ -1739,5 +1739,30 @@ footer a:hover {
 
   .portrait-wrap {
     transform: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Desktop hero: pulled toward the middle, text shifted right, smaller photo
+   -------------------------------------------------------------------------- */
+@media (min-width: 801px) {
+  .intro .hero {
+    width: min(1040px, calc(100% - 64px));
+    grid-template-columns: 1fr 0.58fr;
+    gap: clamp(32px, 4vw, 64px);
+  }
+
+  .intro .hero-content {
+    padding-left: clamp(24px, 5vw, 80px);
+  }
+
+  .intro .hero h1 {
+    font-size: clamp(64px, 9.5vw, 132px);
+  }
+
+  .intro .hero-visual {
+    justify-self: start;
+    max-width: 330px;
   }
 }
