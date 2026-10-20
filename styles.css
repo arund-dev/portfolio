@@ -1103,12 +1103,12 @@ header.scrolled .brandmark {
   grid-template-areas: "tag" "title" "desc" "meta" "shot" "bottom";
 }
 
-.project-tag { grid-area: tag; justify-self: start; margin-bottom: 22px; }
+.project-tag { grid-area: tag; justify-self: start; margin-bottom: 18px; }
 .project-title { grid-area: title; margin-bottom: 26px; }
 .project-description { grid-area: desc; }
 .project-meta { grid-area: meta; }
 .project-showcase { grid-area: shot; }
-.project-bottom { grid-area: bottom; }
+.project-bottom { grid-area: bottom; flex-wrap: wrap; }
 
 /* Showcase: desktop screenshot behind, phone in front */
 .project-showcase {
@@ -1127,8 +1127,8 @@ header.scrolled .brandmark {
 }
 
 .shot-desktop {
-  top: 4%;
-  left: 0;
+  right: 0;
+  bottom: 0;
   width: 84%;
   aspect-ratio: 16 / 10;
   border: 1px solid var(--line);
@@ -1137,14 +1137,29 @@ header.scrolled .brandmark {
 }
 
 .shot-phone {
-  right: 0;
-  bottom: 0;
+  left: 0;
+  top: 0;
   width: 32%;
   aspect-ratio: 9 / 19;
   border: 5px solid #0b0c0a;
   border-radius: 24px;
   background: var(--panel-2);
   box-shadow: 0 0 0 1px var(--line), 0 24px 50px #0009;
+}
+
+.shot-open {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.shot-open:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
 }
 
 .shot-desktop img,
@@ -1159,9 +1174,10 @@ header.scrolled .brandmark {
 @media (min-width: 801px) and (min-height: 501px) {
   .project {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: auto auto auto auto 1fr;
+    grid-template-rows: auto auto auto auto auto 1fr;
     grid-template-areas:
-      "title  tag"
+      "tag    shot"
+      "title  shot"
       "desc   shot"
       "meta   shot"
       "bottom shot"
@@ -1169,10 +1185,52 @@ header.scrolled .brandmark {
     column-gap: 56px;
   }
 
-  .project-tag { justify-self: end; align-self: start; }
   .project-meta { margin-bottom: 12px; }
-  .project-showcase { justify-self: end; margin: 0; }
-  .project-bottom { flex-wrap: wrap; }
+  .project-showcase { justify-self: end; align-self: center; margin: 0; }
+}
+
+/* Screenshot pop-up (main.js) */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #0a0b09b3;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  cursor: zoom-out;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox.open {
+  opacity: 1;
+}
+
+.lightbox img {
+  display: block;
+  max-width: min(94vw, 1100px);
+  max-height: 88vh;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 30px 80px #000a;
+  cursor: default;
+  transform: scale(0.96);
+  transition: transform 0.22s ease;
+}
+
+.lightbox.open img {
+  transform: none;
+}
+
+html.lightbox-open {
+  overflow: hidden;
 }
 
 /* Project footer */
@@ -1675,11 +1733,6 @@ footer a:hover {
     width: 38%;
     border-width: 4px;
     border-radius: 20px;
-  }
-
-  .project-bottom {
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   /* Contact */

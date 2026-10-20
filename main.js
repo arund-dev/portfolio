@@ -346,3 +346,62 @@ const onFrame = (() => {
 
   setTimeout(glitch, 4000 + Math.random() * 4000);
 })();
+
+
+/**
+ * Screenshots: tap one to see it large over a blurred page.
+ * Tap outside the picture (or press Escape) to close it.
+ */
+(() => {
+  const buttons = [...document.querySelectorAll(".shot-open")];
+  if (!buttons.length) return;
+
+  const box = document.createElement("div");
+  box.className = "lightbox";
+  box.hidden = true;
+  box.tabIndex = -1;
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-modal", "true");
+  box.setAttribute("aria-label", "Screenshot preview. Press Escape or tap outside to close.");
+  const big = document.createElement("img");
+  box.appendChild(big);
+  document.body.appendChild(box);
+
+  let lastButton = null;
+  let closeTimer = null;
+
+  const open = (btn) => {
+    const src = btn.querySelector("img");
+    if (!src) return;
+    clearTimeout(closeTimer);
+    lastButton = btn;
+    big.src = src.currentSrc || src.src;
+    big.alt = src.alt;
+    box.hidden = false;
+    void box.offsetWidth; // let the browser register the start state so the fade plays
+    box.classList.add("open");
+    document.documentElement.classList.add("lightbox-open");
+    box.focus();
+  };
+
+  const close = () => {
+    if (box.hidden) return;
+    box.classList.remove("open");
+    document.documentElement.classList.remove("lightbox-open");
+    closeTimer = setTimeout(() => { box.hidden = true; }, 230);
+    if (lastButton) lastButton.focus();
+  };
+
+  buttons.forEach((btn) => btn.addEventListener("click", () => open(btn)));
+
+  // tapping the blurred area closes it; tapping the picture itself does not
+  box.addEventListener("click", (e) => {
+    if (e.target !== big) close();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (box.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "Tab") e.preventDefault(); // keep focus inside the pop-up
+  });
+})();
