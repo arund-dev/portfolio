@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="main.js" defer></script>
 </head>
@@ -54,6 +54,8 @@
     <!-- Intro -->
     <section class="intro" aria-label="Introduction">
       <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
         <pre class="hero-code"><code><span class="c">&lt;!-- index.html --&gt;</span>
 &lt;<span class="k">section</span> <span class="p">class</span>=<span class="s">"intro"</span>&gt;
   &lt;<span class="k">h1</span>&gt;Arunda Ishara&lt;/<span class="k">h1</span>&gt;
@@ -93,7 +95,7 @@
         <div class="hero-content">
           <div class="eyebrow mono"><span class="dot"></span>HELLO WORLD! <span class="face">:)</span></div>
           <p class="hero-im">I’m</p>
-          <h1>Arunda<br><span class="outline">Ishara</span><span class="accent">.</span></h1>
+          <h1>Arunda<br><span class="outline">Ishara<svg class="hand-underline" viewBox="0 0 300 22" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 14 C 50 5, 96 18, 150 10 S 252 7, 296 13"/></svg></span><span class="accent">.</span></h1>
           <p class="hero-copy">
             A curious builder who uses AI tools to turn ideas into useful digital experiences, then tests them in the real world.
           </p>
@@ -104,6 +106,10 @@
           <div class="portrait-wrap">
             <div class="portrait-frame"><img class="portrait" src="assets/photo.jpg" alt="Portrait of Arunda Ishara with the sea behind him"></div>
             <span class="portrait-label" data-text="Curious by nature. Builder by choice.">Curious by nature. Builder by choice.</span>
+            <span class="photo-note" aria-hidden="true">
+              <span class="photo-note-text">that's me :)</span>
+              <svg class="photo-note-arrow" viewBox="0 0 70 60"><path pathLength="1" d="M6 6 C 8 34, 30 50, 56 46"/><path pathLength="1" class="head" d="M44 36 L58 46 L42 54"/></svg>
+            </span>
             <span class="portrait-code" aria-hidden="true"><span class="c-punct">&lt;</span><span class="c-tag">img</span> <span class="c-attr">src</span><span class="c-punct">=</span><span class="c-str squiggle">"arunda.jpg"</span><span class="c-punct">&gt;</span></span>
           </div>
           <div class="hero-actions">
@@ -117,6 +123,10 @@
             </a>
           </div>
         </div>
+      </div>
+      <div class="hero-strip mono" aria-hidden="true">
+        <span class="hero-strip-prompt">$</span>
+        <span class="hero-strip-text" data-text="currently building: iLike"></span><span class="caret"></span>
       </div>
     </section>
 

@@ -205,6 +205,7 @@
 (() => {
   const card = document.getElementById("nowCard");
   if (!card) return;
+  if (window.matchMedia("(min-width: 801px)").matches) return; // removed on desktop
 
   const KEY = "nowCardSeen";
   try {
@@ -281,4 +282,59 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close(true);
   });
+})();
+
+
+/**
+ * Desktop hero extras: terminal strip types "currently building: iLike" once
+ * (the caret keeps blinking), and the dot-grid glow follows the mouse.
+ * The elements are hidden on mobile by CSS.
+ */
+(() => {
+  const strip = document.querySelector(".hero-strip-text");
+  if (strip) {
+    const text = strip.dataset.text || "";
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      strip.textContent = text;
+    } else {
+      let i = 0;
+      setTimeout(() => {
+        const timer = setInterval(() => {
+          i += 1;
+          strip.textContent = text.slice(0, i);
+          if (i >= text.length) clearInterval(timer);
+        }, 70);
+      }, 900);
+    }
+  }
+
+  const intro = document.querySelector(".intro");
+  const bg = document.querySelector(".hero-bg");
+  if (!intro || !bg) return;
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+  let ev = null;
+  let queued = false;
+
+  const apply = () => {
+    queued = false;
+    if (!ev) {
+      bg.style.setProperty("--glow", "0");
+      return;
+    }
+    const r = bg.getBoundingClientRect();
+    bg.style.setProperty("--mx", (ev.clientX - r.left).toFixed(0) + "px");
+    bg.style.setProperty("--my", (ev.clientY - r.top).toFixed(0) + "px");
+    bg.style.setProperty("--glow", "1");
+  };
+
+  const queue = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(apply);
+  };
+
+  intro.addEventListener("pointermove", (e) => { ev = e; queue(); }, { passive: true });
+  intro.addEventListener("pointerleave", () => { ev = null; queue(); });
+  window.addEventListener("scroll", () => { if (ev) queue(); }, { passive: true });
 })();
