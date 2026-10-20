@@ -321,6 +321,7 @@ header.scrolled .brandmark {
 
 .hero h1 .name-dot {
   display: inline-block;
+  margin-left: 2px;
   font-size: 0.85em;            /* a bit smaller */
   transform: scaleX(0.75);      /* a quarter narrower, so not a perfect square */
   transform-origin: 0 50%;
