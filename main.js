@@ -1,3 +1,31 @@
+// Tells the page's inline script that main.js loaded (otherwise content is shown without effects)
+window.__portfolioReady = true;
+
+/**
+ * One shared scroll/resize listener: every scroll-driven effect below
+ * registers an update function here and they all run in a single frame.
+ */
+const onFrame = (() => {
+  const jobs = [];
+  let queued = false;
+
+  const run = () => {
+    queued = false;
+    jobs.forEach((job) => job());
+  };
+
+  const queue = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(run);
+  };
+
+  window.addEventListener("scroll", queue, { passive: true });
+  window.addEventListener("resize", queue);
+
+  return (job) => jobs.push(job);
+})();
+
 /**
  * Scroll-reveal: fades elements with `.reveal` into view
  * the first time they enter the viewport.
@@ -85,11 +113,7 @@
     }, 45);
   };
 
-  let queued = false;
-
   const update = () => {
-    queued = false;
-
     const progress = Math.min(1, Math.max(0, window.scrollY / (intro.offsetHeight * 0.35)));
     intro.style.setProperty("--p", progress.toFixed(3));
 
@@ -103,14 +127,7 @@
     runTerm(bugs.every((bug) => bug.classList.contains("fixed")));
   };
 
-  const queueUpdate = () => {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(update);
-  };
-
-  window.addEventListener("scroll", queueUpdate, { passive: true });
-  window.addEventListener("resize", queueUpdate);
+  onFrame(update);
   update();
 })();
 
@@ -127,10 +144,7 @@
     .map((a) => ({ a, el: document.getElementById(a.getAttribute("href").slice(1)) }))
     .filter((t) => t.el);
 
-  let queued = false;
-
   const update = () => {
-    queued = false;
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
 
@@ -150,14 +164,7 @@
     });
   };
 
-  const queue = () => {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(update);
-  };
-
-  window.addEventListener("scroll", queue, { passive: true });
-  window.addEventListener("resize", queue);
+  onFrame(update);
   update();
 })();
 
@@ -248,7 +255,7 @@
 
   intro.addEventListener("pointermove", (e) => { ev = e; queue(); }, { passive: true });
   intro.addEventListener("pointerleave", () => { ev = null; queue(); });
-  window.addEventListener("scroll", () => { if (ev) queue(); }, { passive: true });
+  onFrame(() => { if (ev) apply(); });
 })();
 
 
@@ -259,6 +266,7 @@
  */
 (() => {
   const desktop = window.matchMedia("(min-width: 801px)");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let raf = null;
 
   const cancel = () => {
@@ -270,7 +278,6 @@
     cancel();
     const start = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
     const end = Math.max(0, Math.min(max, target));
     const dist = end - start;
     if (Math.abs(dist) < 2) return;
@@ -288,10 +295,10 @@
   };
 
   document.addEventListener("click", (e) => {
-    if (!desktop.matches || e.defaultPrevented || e.button !== 0) return;
+    if (!desktop.matches || reduceMotion.matches || e.defaultPrevented || e.button !== 0) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     const a = e.target.closest && e.target.closest('a[href^="#"]');
-    if (!a) return;
+    if (!a || a.classList.contains("skip-link")) return;
     const id = a.getAttribute("href").slice(1);
     const el = id ? document.getElementById(id) : null;
     if (!el) return;

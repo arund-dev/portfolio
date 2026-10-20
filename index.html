@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
+  <script>
+    // Hide reveal-on-scroll content only when JS runs; fall back to visible if main.js never loads
+    document.documentElement.className = "js";
+    setTimeout(function () {
+      if (!window.__portfolioReady) document.documentElement.className = "no-js";
+    }, 4000);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111310">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -10,14 +17,26 @@
   <meta name="description" content="Arunda Ishara from Galle, Sri Lanka. I build apps with AI tools and turn ideas into useful digital experiences.">
   <meta property="og:title" content="Arunda Ishara — Creative Developer">
   <meta property="og:description" content="I turn ideas into useful digital experiences. Explore my work and get in touch.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Arunda Ishara">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Arunda Ishara — Creative Developer">
+  <meta name="twitter:description" content="I turn ideas into useful digital experiences. Explore my work and get in touch.">
+  <!-- Add once the site has a public address (image must be an absolute URL):
+  <meta property="og:url" content="https://YOUR-DOMAIN/">
+  <meta property="og:image" content="https://YOUR-DOMAIN/assets/photo.jpg">
+  <meta name="twitter:image" content="https://YOUR-DOMAIN/assets/photo.jpg">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400&family=Noto+Sans+Tamil:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#content">Skip to content</a>
 
   <!-- SVG icon sprite -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -53,7 +72,7 @@
   <main id="top">
 
     <!-- Intro -->
-    <section class="intro" aria-label="Introduction">
+    <section class="intro" id="content" tabindex="-1" aria-label="Introduction">
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-grid"></div>
         <div class="hero-glow"></div>
@@ -106,7 +125,7 @@
 
         <div class="hero-visual">
           <div class="portrait-wrap">
-            <div class="portrait-frame"><img class="portrait" src="assets/photo.jpg" alt="Portrait of Arunda Ishara with the sea behind him"></div>
+            <div class="portrait-frame"><img class="portrait" src="assets/photo.jpg" width="800" height="940" alt="Portrait of Arunda Ishara with the sea behind him"></div>
             <span class="portrait-label" data-text="Curious by nature. Builder by choice.">Curious by nature. Builder by choice.</span>
             <span class="photo-note" aria-hidden="true">
               <span class="photo-note-text">that's me :)</span>
@@ -129,7 +148,7 @@
     </section>
 
     <!-- Ticker -->
-    <div class="ticker" aria-label="Skills and interests">
+    <div class="ticker" role="group" aria-label="Skills and interests">
       <div class="wrap ticker-track">
         <span><b aria-hidden="true">•</b> BUILDING WITH AI</span>
         <span><b aria-hidden="true">•</b> WEB &amp; APP IDEAS</span>
@@ -168,15 +187,15 @@
             <div class="skill-grid stagger">
               <div class="skill">
                 <span class="num">01 / BUILD</span>
-                <h3><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-build">Installable web apps, built with AI</button></h3>
-                <div class="tip" id="tip-build" data-code="app.imporve();
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-build">Installable web apps, built with AI</button></h4>
+                <div class="tip" id="tip-build" data-code="app.improve();
 // TODO: ship it">
                   <p>Prompt, build, test, repeat. iLike runs as an installable app with a database behind it (Supabase).</p>
                 </div>
               </div>
               <div class="skill">
                 <span class="num">02 / DESIGN</span>
-                <h3><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-design">Responsive layouts for phone &amp; desktop</button></h3>
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-design">Responsive layouts for phone &amp; desktop</button></h4>
                 <div class="tip" id="tip-design" data-code="@media (max-width: 560px)
 { .grid { gap: 8px } }">
                   <p>One layout that holds up on a small phone and a wide monitor. HTML, CSS, and a lot of resizing the window.</p>
@@ -184,7 +203,7 @@
               </div>
               <div class="skill">
                 <span class="num">03 / TOOLS</span>
-                <h3><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-tools">Word, Excel &amp; PowerPoint</button></h3>
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-tools">Word, Excel &amp; PowerPoint</button></h4>
                 <div class="tip" id="tip-tools" data-code="=SUM(B2:B9)
 =AVERAGE(C2:C9)">
                   <p>Documents, spreadsheets and slide decks that are tidy, clear and finished on time.</p>
@@ -192,7 +211,7 @@
               </div>
               <div class="skill">
                 <span class="num">04 / EXPLORE</span>
-                <h3><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-explore">Debugging &amp; online research</button></h3>
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-explore">Debugging &amp; online research</button></h4>
                 <div class="tip" id="tip-explore" data-code="try { fix(); }
 catch { search(); }">
                   <p>When something breaks I read the docs, search for answers, and keep trying until it runs.</p>
@@ -200,7 +219,7 @@ catch { search(); }">
               </div>
               <div class="skill">
                 <span class="num">05 / PEOPLE</span>
-                <h3><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-people">Teamwork &amp; clear communication</button></h3>
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-people">Teamwork &amp; clear communication</button></h4>
                 <div class="tip" id="tip-people" data-code="git pull --rebase
 // stay in sync">
                   <p>I listen first, ask when I’m unsure, and keep people updated on how things are going.</p>
@@ -208,7 +227,7 @@ catch { search(); }">
               </div>
               <div class="skill">
                 <span class="num">06 / LANGUAGES</span>
-                <h3><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-lang">Sinhala · English · Tamil</button></h3>
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-lang">Sinhala · English · Tamil</button></h4>
                 <div class="tip" id="tip-lang" data-code="say(&quot;ආයුබෝවන්&quot;);
 say(&quot;வணக்கம்&quot;);">
                   <p>I can work and chat in all three, which helps when talking to different people.</p>
@@ -251,13 +270,13 @@ say(&quot;வணக்கம்&quot;);">
 
           <div class="screens">
             <div class="screen-wide">
-              <img src="assets/ilike-desktop.jpg" alt="iLike desktop profile with a post and photos" loading="lazy">
+              <img src="assets/ilike-desktop.jpg" width="800" height="500" alt="iLike desktop profile with a post and photos" loading="lazy">
             </div>
             <div class="screen-wide">
-              <img src="assets/ilike-circles.jpg" alt="iLike interest circles list on desktop" loading="lazy">
+              <img src="assets/ilike-circles.jpg" width="800" height="500" alt="iLike interest circles list on desktop" loading="lazy">
             </div>
             <div class="screen-phone">
-              <img src="assets/ilike-profile.jpg" alt="iLike mobile profile screen showing interests and artists" loading="lazy">
+              <img src="assets/ilike-profile.jpg" width="360" height="780" alt="iLike mobile profile screen showing interests and artists" loading="lazy">
             </div>
           </div>
 

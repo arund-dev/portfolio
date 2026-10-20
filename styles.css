@@ -19,7 +19,7 @@
 
   --serif: Georgia, serif;
   --sans: Manrope, Arial, sans-serif;
-  --mono: "DM Mono", monospace;
+  --mono: "DM Mono", "Noto Sans Sinhala", "Noto Sans Tamil", monospace;
 
   --max: 1180px;
   --header-h: 84px;
@@ -37,6 +37,26 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 100;
+  top: -80px;
+  left: 12px;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 12px var(--mono);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+#content:focus {
+  outline: none;
 }
 
 body {
@@ -138,7 +158,7 @@ button {
 }
 
 /* Scroll-reveal (toggled by main.js) */
-.reveal {
+:where(.js) .reveal {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -485,6 +505,7 @@ header.scrolled .brandmark {
 .portrait-label::before,
 .portrait-label::after {
   content: attr(data-text);
+  content: attr(data-text) / "";
   position: absolute;
   inset: 0;
   padding: inherit;
@@ -603,6 +624,13 @@ header.scrolled .brandmark {
   mask-composite: intersect;
   /* --p (0 → 1) is set by main.js from the scroll position */
   transform: translateY(calc(var(--p, 0) * -60px));
+}
+
+/* Hidden on desktop (the dot grid replaces it) */
+@media (min-width: 801px) {
+  .hero-code {
+    display: none !important;
+  }
 }
 
 /* Variants of the site's lime green */
@@ -735,7 +763,7 @@ header.scrolled .brandmark {
   width: 56px;
 }
 
-.section-head.reveal .section-title {
+:where(.js) .section-head.reveal .section-title {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.7s ease 0.15s, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
@@ -752,7 +780,7 @@ header.scrolled .brandmark {
 }
 
 /* Cards in a .stagger group rise one after another (main.js adds .visible) */
-.stagger > * {
+:where(.js) .stagger > * {
   opacity: 0;
 }
 
@@ -858,7 +886,7 @@ header.scrolled .brandmark {
   color: var(--accent);
 }
 
-.skill h3 {
+.skill h4 {
   margin: 13px 0 0;
   font-size: 15px;
   letter-spacing: -0.02em;
@@ -960,6 +988,7 @@ header.scrolled .brandmark {
 /* Faint code snippet as decoration in the corner of the pop-up (text comes from data-code) */
 .tip::after {
   content: attr(data-code);
+  content: attr(data-code) / "";
   position: absolute;
   right: 12px;
   bottom: 9px;
@@ -1553,6 +1582,10 @@ footer a:hover {
     animation: marquee 30s linear infinite;
   }
 
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
   .ticker-track span {
     flex-shrink: 0;
   }
@@ -1588,7 +1621,7 @@ footer a:hover {
     padding: 15px;
   }
 
-  .skill h3 {
+  .skill h4 {
     font-size: 13px;
   }
 
@@ -1694,6 +1727,21 @@ footer a:hover {
   }
 }
 
+@media (prefers-reduced-motion: reduce) and (max-width: 560px) {
+  .ticker {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .ticker::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ticker-clone {
+    display: none;
+  }
+}
+
 
 /* --------------------------------------------------------------------------
    Desktop hero: pulled toward the middle, text shifted right, smaller photo
@@ -1790,10 +1838,6 @@ footer a:hover {
 }
 
 @media (min-width: 801px) {
-  /* remove the broken-code decoration on desktop */
-  .hero-code {
-    display: none !important;
-  }
 
   .hero-bg {
     background: none;
