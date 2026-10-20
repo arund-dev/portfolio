@@ -3,7 +3,9 @@ window.__portfolioReady = true;
 
 /**
  * One shared scroll/resize listener: every scroll-driven effect below
- * registers an update function here and they all run in a single frame.
+ * registers a job here and they all run in a single frame.
+ * A job reads from the page and returns a function that does its writes,
+ * so all reads happen first and the browser only lays out once per frame.
  */
 const onFrame = (() => {
   const jobs = [];
@@ -11,7 +13,8 @@ const onFrame = (() => {
 
   const run = () => {
     queued = false;
-    jobs.forEach((job) => job());
+    const writes = jobs.map((job) => job());
+    writes.forEach((write) => write && write());
   };
 
   const queue = () => {
@@ -23,7 +26,13 @@ const onFrame = (() => {
   window.addEventListener("scroll", queue, { passive: true });
   window.addEventListener("resize", queue);
 
-  return (job) => jobs.push(job);
+  const register = (job) => {
+    jobs.push(job);
+    const write = job();
+    if (write) write();
+  };
+  register.request = queue;
+  return register;
 })();
 
 /**
@@ -115,20 +124,22 @@ const onFrame = (() => {
 
   const update = () => {
     const progress = Math.min(1, Math.max(0, window.scrollY / (intro.offsetHeight * 0.35)));
-    intro.style.setProperty("--p", progress.toFixed(3));
 
-    bugs.forEach((bug) => {
-      const fixed = progress >= parseFloat(bug.dataset.at);
-      if (fixed === bug.classList.contains("fixed")) return;
-      bug.classList.toggle("fixed", fixed);
-      bug.textContent = fixed ? bug.dataset.fix : bug.dataset.bad;
-    });
+    return () => {
+      intro.style.setProperty("--p", progress.toFixed(3));
 
-    runTerm(bugs.every((bug) => bug.classList.contains("fixed")));
+      bugs.forEach((bug) => {
+        const fixed = progress >= parseFloat(bug.dataset.at);
+        if (fixed === bug.classList.contains("fixed")) return;
+        bug.classList.toggle("fixed", fixed);
+        bug.textContent = fixed ? bug.dataset.fix : bug.dataset.bad;
+      });
+
+      runTerm(bugs.every((bug) => bug.classList.contains("fixed")));
+    };
   };
 
   onFrame(update);
-  update();
 })();
 
 /**
@@ -148,24 +159,25 @@ const onFrame = (() => {
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - window.innerHeight;
 
-    header.classList.toggle("scrolled", y > 24);
-
     let current = null;
     targets.forEach((t) => {
       if (t.el.getBoundingClientRect().top <= window.innerHeight * 0.4) current = t;
     });
     if (max > 0 && y >= max - 4 && targets.length) current = targets[targets.length - 1];
 
-    targets.forEach((t) => {
-      const on = t === current;
-      t.a.classList.toggle("active", on);
-      if (on) t.a.setAttribute("aria-current", "true");
-      else t.a.removeAttribute("aria-current");
-    });
+    return () => {
+      header.classList.toggle("scrolled", y > 24);
+
+      targets.forEach((t) => {
+        const on = t === current;
+        t.a.classList.toggle("active", on);
+        if (on) t.a.setAttribute("aria-current", "true");
+        else t.a.removeAttribute("aria-current");
+      });
+    };
   };
 
   onFrame(update);
-  update();
 })();
 
 /**
@@ -217,6 +229,7 @@ const onFrame = (() => {
   });
 
   document.addEventListener("keydown", (e) => {
+    if (document.documentElement.classList.contains("lightbox-open")) return; // the screenshot pop-up handles Escape
     if (e.key === "Escape") close(true);
   });
 })();
@@ -233,29 +246,26 @@ const onFrame = (() => {
   if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
   let ev = null;
-  let queued = false;
 
-  const apply = () => {
-    queued = false;
-    if (!ev) {
-      bg.style.setProperty("--glow", "0");
-      return;
-    }
-    const r = bg.getBoundingClientRect();
-    bg.style.setProperty("--mx", (ev.clientX - r.left).toFixed(0) + "px");
-    bg.style.setProperty("--my", (ev.clientY - r.top).toFixed(0) + "px");
-    bg.style.setProperty("--glow", "1");
+  const update = () => {
+    const r = ev ? bg.getBoundingClientRect() : null;
+    const x = ev ? ev.clientX : 0;
+    const y = ev ? ev.clientY : 0;
+
+    return () => {
+      if (!r) {
+        bg.style.setProperty("--glow", "0");
+        return;
+      }
+      bg.style.setProperty("--mx", (x - r.left).toFixed(0) + "px");
+      bg.style.setProperty("--my", (y - r.top).toFixed(0) + "px");
+      bg.style.setProperty("--glow", "1");
+    };
   };
 
-  const queue = () => {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(apply);
-  };
-
-  intro.addEventListener("pointermove", (e) => { ev = e; queue(); }, { passive: true });
-  intro.addEventListener("pointerleave", () => { ev = null; queue(); });
-  onFrame(() => { if (ev) apply(); });
+  intro.addEventListener("pointermove", (e) => { ev = e; onFrame.request(); }, { passive: true });
+  intro.addEventListener("pointerleave", () => { ev = null; onFrame.request(); });
+  onFrame(update);
 })();
 
 
@@ -309,6 +319,9 @@ const onFrame = (() => {
     glideTo(y);
     try { history.pushState(null, "", "#" + id); } catch (err) {}
   });
+
+  // Back / Forward: stop any glide so it doesn't fight the browser's own scroll restoration
+  window.addEventListener("popstate", cancel);
 
   // let the user take over: any wheel / touch / key press stops the glide
   ["wheel", "touchstart", "keydown"].forEach((evt) =>
@@ -375,7 +388,8 @@ const onFrame = (() => {
     if (!src) return;
     clearTimeout(closeTimer);
     lastButton = btn;
-    big.src = src.currentSrc || src.src;
+    // add data-full="assets/bigger-file.jpg" on the button to show a sharper version in the pop-up
+    big.src = btn.dataset.full || src.currentSrc || src.src;
     big.alt = src.alt;
     box.hidden = false;
     void box.offsetWidth; // let the browser register the start state so the fade plays
@@ -384,22 +398,25 @@ const onFrame = (() => {
     box.focus();
   };
 
-  const close = () => {
+  const close = (viaKeyboard) => {
     if (box.hidden) return;
     box.classList.remove("open");
     document.documentElement.classList.remove("lightbox-open");
     closeTimer = setTimeout(() => { box.hidden = true; }, 230);
-    if (lastButton) lastButton.focus();
+    // Only hand focus back after a keyboard close. After a tap or click, focusing the
+    // button would leave the lime focus outline stuck on the screenshot.
+    if (viaKeyboard === true && lastButton) lastButton.focus();
+    else if (document.activeElement && box.contains(document.activeElement)) document.activeElement.blur();
   };
 
   buttons.forEach((btn) => btn.addEventListener("click", () => open(btn)));
 
   // tapping anywhere (blurred area or the picture itself) closes it
-  box.addEventListener("click", close);
+  box.addEventListener("click", () => close(false));
 
   document.addEventListener("keydown", (e) => {
     if (box.hidden) return;
-    if (e.key === "Escape") close();
+    if (e.key === "Escape") close(true);
     else if (e.key === "Tab") e.preventDefault(); // keep focus inside the pop-up
   });
 })();

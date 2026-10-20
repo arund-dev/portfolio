@@ -138,11 +138,13 @@ button {
   transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
 }
 
-.button:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--accent-ink);
+@media (hover: hover) {
+  .button:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
 }
 
 .button.secondary {
@@ -151,10 +153,12 @@ button {
   color: var(--ink);
 }
 
-.button.secondary:hover {
-  border-color: var(--accent);
-  background: #c8f16914;
-  color: var(--accent);
+@media (hover: hover) {
+  .button.secondary:hover {
+    border-color: var(--accent);
+    background: #c8f16914;
+    color: var(--accent);
+  }
 }
 
 /* Scroll-reveal (toggled by main.js) */
@@ -243,8 +247,10 @@ header.scrolled .brandmark {
   transition: color 0.2s;
 }
 
-.navlinks a:hover {
-  color: var(--accent);
+@media (hover: hover) {
+  .navlinks a:hover {
+    color: var(--accent);
+  }
 }
 
 /* "You are here" state for the section links (colour only, no growing line) */
@@ -261,8 +267,10 @@ header.scrolled .brandmark {
   color: var(--accent);
 }
 
-.navlinks .nav-cta.active:hover {
-  color: var(--accent-ink);
+@media (hover: hover) {
+  .navlinks .nav-cta.active:hover {
+    color: var(--accent-ink);
+  }
 }
 
 .navlinks .nav-cta {
@@ -272,10 +280,12 @@ header.scrolled .brandmark {
   color: var(--ink);
 }
 
-.navlinks .nav-cta:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-ink);
+@media (hover: hover) {
+  .navlinks .nav-cta:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -887,9 +897,11 @@ header.scrolled .brandmark {
   background: var(--panel-2);
 }
 
-.skill:hover {
-  border-color: var(--accent);
-  transform: translateY(-3px);
+@media (hover: hover) {
+  .skill:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
 }
 
 .skill .num {
@@ -1152,6 +1164,7 @@ header.scrolled .brandmark {
 }
 
 .shot-open {
+  -webkit-tap-highlight-color: transparent;
   display: block;
   width: 100%;
   height: 100%;
@@ -1241,6 +1254,7 @@ header.scrolled .brandmark {
   display: block;
   max-width: min(94vw, 1100px);
   max-height: 88vh;
+  max-height: 88dvh;
   border: 1px solid var(--line);
   border-radius: 10px;
   box-shadow: 0 30px 80px #000a;
@@ -1251,6 +1265,10 @@ header.scrolled .brandmark {
 
 .lightbox.open img {
   transform: none;
+}
+
+html {
+  scrollbar-gutter: stable; /* page doesn't shift sideways when the pop-up locks scrolling */
 }
 
 html.lightbox-open {
@@ -1289,10 +1307,12 @@ html.lightbox-open {
   transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
-.text-link:hover {
-  transform: translateY(-2px);
-  background: var(--accent-hover);
-  box-shadow: 0 8px 24px #c8f16930;
+@media (hover: hover) {
+  .text-link:hover {
+    transform: translateY(-2px);
+    background: var(--accent-hover);
+    box-shadow: 0 8px 24px #c8f16930;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1478,11 +1498,18 @@ html.lightbox-open {
   transition: transform 0.2s, background 0.2s, color 0.2s;
 }
 
-.contact-actions .socials a:hover,
 .contact-actions .socials a:focus-visible {
   transform: translateY(-3px);
   background: var(--accent-ink);
   color: var(--accent);
+}
+
+@media (hover: hover) {
+  .contact-actions .socials a:hover {
+    transform: translateY(-3px);
+    background: var(--accent-ink);
+    color: var(--accent);
+  }
 }
 
 .contact-actions .socials .icon {
@@ -1499,8 +1526,10 @@ html.lightbox-open {
   color: var(--ink);
 }
 
-.contact-actions .dark-button:hover {
-  transform: translateY(-3px);
+@media (hover: hover) {
+  .contact-actions .dark-button:hover {
+    transform: translateY(-3px);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1517,8 +1546,10 @@ footer {
   letter-spacing: 0.05em;
 }
 
-footer a:hover {
-  color: var(--accent);
+@media (hover: hover) {
+  footer a:hover {
+    color: var(--accent);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1593,6 +1624,14 @@ footer a:hover {
 }
 
 @media (max-width: 560px) {
+  :root {
+    --header-h: 70px;
+  }
+
+  html {
+    scroll-padding-top: 76px; /* mobile header is 70px */
+  }
+
   /* Header */
   header {
     height: 70px;
@@ -1689,8 +1728,10 @@ footer a:hover {
     animation: marquee 30s linear infinite;
   }
 
-  .ticker-track:hover {
-    animation-play-state: paused;
+  @media (hover: hover) {
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
   }
 
   .ticker-track span {
