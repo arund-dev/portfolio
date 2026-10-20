@@ -1841,6 +1841,8 @@ footer a:hover {
     width: min(1040px, calc(100% - 64px));
     grid-template-columns: 1fr 0.58fr;
     gap: clamp(32px, 4vw, 64px);
+    align-items: start; /* both columns start at the same top edge... */
+    align-content: center; /* ...and the whole block stays centred in the hero */
   }
 
   .intro .hero-content {
@@ -1854,7 +1856,7 @@ footer a:hover {
   .intro .hero-visual {
     justify-self: start;
     max-width: 330px;
-    margin-top: 28px; /* photo a little lower */
+    margin-top: 20px; /* top of the <img> label lines up with the top of "HELLO WORLD" */
   }
 
   /* buttons move from under the photo to under the location note */
