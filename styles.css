@@ -1833,7 +1833,6 @@ footer a:hover {
    -------------------------------------------------------------------------- */
 .hero-grid,
 .hero-glow,
-.hero-strip,
 .hand-underline,
 .photo-note {
   display: none;
@@ -1885,34 +1884,6 @@ footer a:hover {
     background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), #c8f16920, transparent 65%);
   }
 
-  /* terminal strip at the bottom of the hero */
-  .hero-strip {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    width: min(1040px, calc(100% - 64px));
-    padding-left: clamp(24px, 5vw, 80px);
-    transform: translateX(-50%);
-    color: #c8f169b3;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    text-transform: none;
-  }
-
-  .hero-strip-prompt {
-    color: #c8f16966;
-  }
-
-  .hero-strip .caret {
-    width: 7px;
-    height: 1.1em;
-    margin-left: -7px;
-  }
-
   /* hand-drawn underline under "Ishara" */
   .intro .hero h1 .outline {
     position: relative;
@@ -1929,8 +1900,9 @@ footer a:hover {
     overflow: visible;
     fill: none;
     stroke: var(--accent);
-    stroke-width: 4;
+    stroke-width: 2.4;
     stroke-linecap: round;
+    stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
     pointer-events: none;
   }
@@ -1962,8 +1934,8 @@ footer a:hover {
 
   .photo-note-arrow {
     display: block;
-    width: 44px;
-    height: 38px;
+    width: 46px;
+    height: 66px;
     margin: 2px 0 0 -4px;
     overflow: visible;
     fill: none;
