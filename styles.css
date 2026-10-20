@@ -633,6 +633,13 @@ header.scrolled .brandmark {
   }
 }
 
+/* Hidden on phones held sideways (landscape); portrait is unchanged */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-code {
+    display: none !important;
+  }
+}
+
 /* Variants of the site's lime green */
 .hero-code .k { color: #c8f1695a; }
 .hero-code .s { color: #a6cf5a4c; }
