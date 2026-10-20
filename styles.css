@@ -1792,7 +1792,7 @@ footer a:hover {
 
   .about-cols {
     display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns: 1.2fr 0.8fr; /* Skills (wide) on the left, How I build on the right */
     gap: 56px;
     align-items: start;
     margin-top: 44px;
@@ -1813,5 +1813,14 @@ footer a:hover {
 
   .skill {
     min-height: 96px;
+  }
+
+  /* swap sides: Skills first, How I build second */
+  .about-col:nth-child(1) { order: 2; }
+  .about-col:nth-child(2) { order: 1; }
+
+  /* section titles nudged a bit to the right */
+  .section-title {
+    padding-left: clamp(24px, 4vw, 64px);
   }
 }
