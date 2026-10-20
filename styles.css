@@ -1187,6 +1187,20 @@ header.scrolled .brandmark {
 
   .project-meta { margin-bottom: 12px; }
   .project-showcase { justify-self: end; align-self: center; margin: 0; }
+
+  /* desktop: phone on the right, desktop screenshot on the left and a little higher */
+  .shot-desktop {
+    top: 8%;
+    right: auto;
+    bottom: auto;
+    left: 0;
+  }
+
+  .shot-phone {
+    top: 0;
+    right: 0;
+    left: auto;
+  }
 }
 
 /* Screenshot pop-up (main.js) */
