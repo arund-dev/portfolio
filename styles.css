@@ -1824,16 +1824,6 @@ footer a:hover {
     mask-image: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 50%), #000, transparent);
   }
 
-  /* faint green glow that follows the mouse (--mx / --my set by main.js) */
-  .hero-glow {
-    display: block;
-    position: absolute;
-    inset: 0;
-    opacity: var(--glow, 0);
-    transition: opacity 0.4s ease-out;
-    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), #c8f16920, transparent 65%);
-  }
-
   /* arrow + scribble note pointing to the photo */
   .photo-note {
     display: block;
