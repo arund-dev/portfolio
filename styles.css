@@ -409,6 +409,10 @@ header.scrolled .brandmark {
   padding-right: 22px; /* lines up with the photo, not its outline */
 }
 
+.hero-actions--desk {
+  display: none;
+}
+
 .hero-actions .button {
   flex: 1 1 auto;
   padding: 12px 15px;
@@ -1850,6 +1854,27 @@ footer a:hover {
   .intro .hero-visual {
     justify-self: start;
     max-width: 330px;
+    margin-top: 28px; /* photo a little lower */
+  }
+
+  /* buttons move from under the photo to under the location note */
+  .intro .hero-visual .hero-actions {
+    display: none;
+  }
+
+  .intro .hero-note {
+    margin-top: 26px; /* note a little higher */
+  }
+
+  .intro .hero-actions--desk {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 22px;
+    padding-right: 0;
+  }
+
+  .intro .hero-actions--desk .button {
+    flex: 0 0 auto;
   }
 }
 
