@@ -321,9 +321,9 @@ header.scrolled .brandmark {
 
 .hero h1 .name-dot {
   display: inline-block;
-  width: 0.16em;
+  width: 0.08em;
   height: 0.16em;
-  margin-left: 0.25em;
+  margin-left: 0.02em;
   background: var(--accent);
   animation: name-dot-blink 1.1s steps(1, end) infinite;
 }
@@ -347,7 +347,7 @@ header.scrolled .brandmark {
    the empty space below the letters) */
 .code-comment {
   display: block;
-  margin-top: calc(-1 * clamp(4px, 3vw, 12px));
+  margin-top: calc(-1 * clamp(0px, 1.2vw, 5px));
   font: 400 12px/1 var(--mono);
   letter-spacing: 0.04em;
   color: var(--muted);
@@ -361,7 +361,7 @@ header.scrolled .brandmark {
 
 @media (min-width: 801px) {
   .code-comment {
-    margin-top: calc(-1 * clamp(4px, 0.9vw, 12px));
+    margin-top: calc(-1 * clamp(0px, 0.3vw, 3px));
   }
 }
 

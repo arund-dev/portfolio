@@ -308,3 +308,34 @@
     window.addEventListener(evt, cancel, { passive: true })
   );
 })();
+
+
+/**
+ * Name: every now and then (random, 7-15s apart, all screen sizes) the name
+ * does a very small glitch, in the same pink/cyan style as the photo strip.
+ * Kept random so it drifts out of sync with the strip's 6s cycle.
+ */
+(() => {
+  const name = document.querySelector(".hero h1");
+  if (!name || !name.animate) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const step = "steps(1, end)";
+  const frames = [
+    { transform: "none", textShadow: "none", opacity: 1, offset: 0, easing: step },
+    { transform: "translateX(-3px) skewX(-6deg)", textShadow: "-3px 0 #ff2d6f, 3px 0 #2de2ff", opacity: 1, offset: 0.15, easing: step },
+    { transform: "translateX(3px) skewX(4deg)", textShadow: "3px 0 #ff2d6f, -3px 0 #2de2ff", opacity: 0.75, offset: 0.35, easing: step },
+    { transform: "translateX(-2px)", textShadow: "-2px 0 #ff2d6f", opacity: 1, offset: 0.55, easing: step },
+    { transform: "translateX(1px)", textShadow: "none", opacity: 1, offset: 0.75, easing: step },
+    { transform: "none", textShadow: "none", opacity: 1, offset: 1 },
+  ];
+
+  const next = () => 7000 + Math.random() * 8000;
+
+  const glitch = () => {
+    if (!document.hidden) name.animate(frames, { duration: 360 });
+    setTimeout(glitch, next());
+  };
+
+  setTimeout(glitch, 4000 + Math.random() * 4000);
+})();
