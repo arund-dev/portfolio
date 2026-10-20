@@ -1766,3 +1766,60 @@ footer a:hover {
     max-width: 330px;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   Desktop section layout: titles and text on the left, "How I build" and
+   "Skills" side by side under the description
+   -------------------------------------------------------------------------- */
+@media (min-width: 801px) {
+  /* "01 / ABOUT ME" sits on top, the big title goes under it (all sections) */
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-copy {
+    max-width: none;
+  }
+
+  .about-copy > p {
+    max-width: 720px;
+  }
+
+  .about-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 18px;
+  }
+
+  .about-col .skills-title {
+    margin-top: 0;
+  }
+
+  .how {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 18px;
+  }
+
+  .skill-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* skill grid is now 2 columns, so the pop-up of the right-hand box opens leftwards */
+  .skill:nth-child(3n) .tip {
+    left: 0;
+    right: auto;
+  }
+
+  .skill:nth-child(2n) .tip {
+    left: auto;
+    right: 0;
+  }
+}
