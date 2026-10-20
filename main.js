@@ -162,39 +162,6 @@
 })();
 
 /**
- * "Currently" pop-up: slides in shortly after load, hides itself after a while,
- * can be dismissed, and stays away for the rest of the browser session.
- */
-(() => {
-  const card = document.getElementById("nowCard");
-  if (!card) return;
-  if (window.matchMedia("(min-width: 801px)").matches) return; // removed on desktop
-
-  const KEY = "nowCardSeen";
-  try {
-    if (sessionStorage.getItem(KEY) === "1") return;
-  } catch (e) {}
-
-  let hideTimer = null;
-
-  const hide = () => {
-    clearTimeout(hideTimer);
-    card.classList.remove("show");
-    try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
-  };
-
-  card.querySelector(".now-close").addEventListener("click", hide);
-  card.querySelector(".now-body").addEventListener("click", hide);
-  card.addEventListener("mouseenter", () => clearTimeout(hideTimer));
-  card.addEventListener("mouseleave", () => { hideTimer = setTimeout(hide, 4000); });
-
-  setTimeout(() => {
-    card.classList.add("show");
-    hideTimer = setTimeout(hide, 12000);
-  }, 2500);
-})();
-
-/**
  * Skills: tap a box to open its small pop-up. Only one is open at a time;
  * tapping anywhere else (or pressing Escape) closes it.
  */
