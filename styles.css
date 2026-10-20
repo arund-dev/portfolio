@@ -1873,6 +1873,7 @@ footer a:hover {
     justify-content: flex-start;
     margin-top: 22px;
     padding-right: 0;
+    padding-left: 18px; /* nudged a little to the right */
   }
 
   .intro .hero-actions--desk .button {
