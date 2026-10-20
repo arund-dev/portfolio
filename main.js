@@ -350,7 +350,7 @@ const onFrame = (() => {
 
 /**
  * Screenshots: tap one to see it large over a blurred page.
- * Tap outside the picture (or press Escape) to close it.
+ * Tap anywhere (picture included) or press Escape to close it.
  */
 (() => {
   const buttons = [...document.querySelectorAll(".shot-open")];
@@ -362,7 +362,7 @@ const onFrame = (() => {
   box.tabIndex = -1;
   box.setAttribute("role", "dialog");
   box.setAttribute("aria-modal", "true");
-  box.setAttribute("aria-label", "Screenshot preview. Press Escape or tap outside to close.");
+  box.setAttribute("aria-label", "Screenshot preview. Press Escape or tap to close.");
   const big = document.createElement("img");
   box.appendChild(big);
   document.body.appendChild(box);
@@ -394,10 +394,8 @@ const onFrame = (() => {
 
   buttons.forEach((btn) => btn.addEventListener("click", () => open(btn)));
 
-  // tapping the blurred area closes it; tapping the picture itself does not
-  box.addEventListener("click", (e) => {
-    if (e.target !== big) close();
-  });
+  // tapping anywhere (blurred area or the picture itself) closes it
+  box.addEventListener("click", close);
 
   document.addEventListener("keydown", (e) => {
     if (box.hidden) return;

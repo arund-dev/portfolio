@@ -1207,6 +1207,12 @@ header.scrolled .brandmark {
   }
 }
 
+/* Mobile / tablet: desktop screenshot sits a bit higher, its bottom edge above the phone's bottom edge (same proportion as on desktop) */
+@media (max-width: 800px) {
+  .project-showcase { aspect-ratio: 1 / 0.68; }
+  .shot-desktop { bottom: 7.7%; }
+}
+
 /* Screenshot pop-up (main.js) */
 .lightbox {
   position: fixed;
@@ -1238,7 +1244,7 @@ header.scrolled .brandmark {
   border: 1px solid var(--line);
   border-radius: 10px;
   box-shadow: 0 30px 80px #000a;
-  cursor: default;
+  cursor: zoom-out;
   transform: scale(0.96);
   transition: transform 0.22s ease;
 }
@@ -1740,11 +1746,12 @@ footer a:hover {
   }
 
   .project-showcase {
-    aspect-ratio: 1 / 0.9;
+    aspect-ratio: 1 / 0.8;
   }
 
   .shot-desktop {
     width: 82%;
+    bottom: 7.8%;
   }
 
   .shot-phone {
