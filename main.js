@@ -383,6 +383,7 @@ const onFrame = (() => {
   box.setAttribute("aria-modal", "true");
   box.setAttribute("aria-label", "Screenshot preview. Press Escape or tap to close.");
   const big = document.createElement("img");
+  big.alt = ""; // real description is set when a screenshot opens
   box.appendChild(big);
   document.body.appendChild(box);
 
@@ -425,4 +426,32 @@ const onFrame = (() => {
     if (e.key === "Escape") close(true);
     else if (e.key === "Tab") e.preventDefault(); // keep focus inside the pop-up
   });
+})();
+
+/* ---------- Small finishing touches ---------- */
+(() => {
+  // Keep the last two words of every paragraph together so no line ends with one lonely word
+  // (CSS text-wrap: pretty does this too, but Firefox and older Safari ignore it).
+  document.querySelectorAll("main p").forEach((p) => {
+    if (p.closest(".hero-code")) return;
+    const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+    let last = null;
+    while (walker.nextNode()) if (walker.currentNode.nodeValue.trim()) last = walker.currentNode;
+    if (!last) return;
+    const text = last.nodeValue.replace(/\s+$/, "");
+    if (!/\S \S/.test(text)) return; // needs at least two words in this piece of text
+    last.nodeValue = text.replace(/ (\S+)$/, "\u00a0$1") + last.nodeValue.slice(text.length);
+  });
+
+  // A hello for anyone who opens DevTools
+  try {
+    const big = "font:800 20px/1.4 system-ui,sans-serif;color:#c8f169";
+    const small = "font:13px/1.6 system-ui,sans-serif;color:#a6aa9d";
+    console.log("%cHey, you opened DevTools.", big);
+    console.log(
+      "%cI like people who look under the hood. I built this by hand with HTML, CSS and a little JavaScript.\n" +
+      "Say hi: https://www.linkedin.com/in/arund-dev  ·  https://github.com/arund-dev",
+      small
+    );
+  } catch (err) {}
 })();

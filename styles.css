@@ -38,6 +38,35 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
   scrollbar-gutter: stable; /* page doesn't shift sideways when the pop-up locks scrolling */
+  color-scheme: dark; /* dark scrollbars, form controls and overscroll */
+  scrollbar-width: thin;
+  scrollbar-color: #3b4034 var(--bg);
+}
+
+/* Safari / older browsers: same dark, slim scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b4034;
+  border: 3px solid var(--bg);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #565d4a;
+}
+
+/* No lonely last word on a line */
+main p,
+main li {
+  text-wrap: pretty;
 }
 
 .skip-link {
@@ -1525,6 +1554,15 @@ footer {
   color: var(--muted);
   font: 11px var(--mono);
   letter-spacing: 0.05em;
+}
+
+/* bigger tap area without changing how the footer looks */
+footer a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-block: -15px;
 }
 
 @media (hover: hover) {
