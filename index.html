@@ -14,6 +14,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
 
   <title>Arunda Ishara — AI-Assisted Developer</title>
   <meta name="description" content="Arunda Ishara from Galle, Sri Lanka. I build apps with AI tools and turn ideas into useful digital experiences.">
@@ -21,13 +22,18 @@
   <meta property="og:description" content="I turn ideas into useful digital experiences. Explore my work and get in touch.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arunda Ishara">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Arunda Ishara — AI-Assisted Developer">
   <meta name="twitter:description" content="I turn ideas into useful digital experiences. Explore my work and get in touch.">
-  <!-- Add once the site has a public address (image must be an absolute URL):
+  <!-- Link preview (WhatsApp, LinkedIn, etc.). Turn on once the site has a public address:
+       replace YOUR-DOMAIN with the real address (must be a full https:// URL), then delete this comment wrapper.
   <meta property="og:url" content="https://YOUR-DOMAIN/">
-  <meta property="og:image" content="https://YOUR-DOMAIN/assets/photo.jpg">
-  <meta name="twitter:image" content="https://YOUR-DOMAIN/assets/photo.jpg">
+  <meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Arunda Ishara, AI-assisted developer from Galle, Sri Lanka">
+  <meta name="twitter:image" content="https://YOUR-DOMAIN/assets/og-image.jpg">
+  <link rel="canonical" href="https://YOUR-DOMAIN/">
   -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,8 +54,6 @@
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
     <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
     <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></symbol>
-    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
   </svg>
 
   <header>
@@ -332,7 +336,7 @@ say(&quot;வணக்கம்&quot;);">
           </div>
           <div class="contact-copy">
             <h2>Let’s build<br>something.</h2>
-            <p>I’m open to entry-level opportunities and new connections. If you have an idea, a role, or just want to say hello, I’d love to hear from you.</p>
+            <p>I’m open to entry-level opportunities and new connections. If you have an idea, a role, or just want to say hello, I’d love to hear from you. Email or LinkedIn is best.</p>
           </div>
           <div class="contact-actions">
             <div class="socials" aria-label="Contact and profiles">
@@ -340,9 +344,8 @@ say(&quot;வணக்கம்&quot;);">
               <a href="https://wa.me/94742547118?text=Hi%20Arunda%2C%20I%20found%20your%20portfolio" target="_blank" rel="noopener noreferrer" aria-label="Message me on WhatsApp" title="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
               <a href="https://www.linkedin.com/in/arund-dev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
               <a href="https://github.com/arund-dev" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a>
-              <a href="https://www.instagram.com/wtfarunda" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-              <a href="https://www.facebook.com/profile.php?id=61593541264277" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
             </div>
+            <a class="contact-email" href="mailto:arunishara530@gmail.com">arunishara530@gmail.com</a>
           </div>
         </div>
       </div>
