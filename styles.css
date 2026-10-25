@@ -37,6 +37,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  scrollbar-gutter: stable; /* page doesn't shift sideways when the pop-up locks scrolling */
 }
 
 .skip-link {
@@ -55,7 +56,8 @@ html {
   top: 12px;
 }
 
-#content:focus {
+#content:focus,
+[tabindex="-1"]:focus {
   outline: none;
 }
 
@@ -296,6 +298,7 @@ header.scrolled .brandmark {
   grid-template-columns: 1.12fr 0.88fr;
   align-items: center;
   gap: clamp(40px, 7vw, 110px);
+  min-height: calc(100vh - var(--header-h));
   min-height: calc(100svh - var(--header-h));
   padding-top: 72px;
   padding-bottom: 90px;
@@ -828,6 +831,7 @@ header.scrolled .brandmark {
   font-size: clamp(36px, 5vw, 62px);
   line-height: 1.08;
   letter-spacing: -0.065em;
+  text-wrap: balance;
 }
 
 .section-title em {
@@ -964,7 +968,7 @@ header.scrolled .brandmark {
   visibility: hidden;
   transform: translateY(-6px);
   transition: opacity 0.2s, transform 0.2s, visibility 0s 0.2s;
-  pointer-events: none;
+  pointer-events: none; /* taps go through to the skill box underneath */
 }
 
 .skill.open .tip {
@@ -972,7 +976,6 @@ header.scrolled .brandmark {
   visibility: visible;
   transform: none;
   transition-delay: 0s;
-  pointer-events: auto;
 }
 
 .tip--right {
@@ -1146,7 +1149,7 @@ header.scrolled .brandmark {
   right: 0;
   bottom: 0;
   width: 84%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1280 / 673;
   border: 1px solid var(--line);
   border-radius: 10px;
   box-shadow: 0 18px 40px #0006;
@@ -1265,10 +1268,6 @@ header.scrolled .brandmark {
 
 .lightbox.open img {
   transform: none;
-}
-
-html {
-  scrollbar-gutter: stable; /* page doesn't shift sideways when the pop-up locks scrolling */
 }
 
 html.lightbox-open {
@@ -1444,10 +1443,6 @@ html.lightbox-open {
   border: 1px solid #11131012;
 }
 
-.contact-panel .mono {
-  color: #3d4c27;
-}
-
 .contact-panel h2 {
   max-width: 700px;
   margin: 0 0 22px;
@@ -1518,20 +1513,6 @@ html.lightbox-open {
   stroke-width: 1.7;
 }
 
-.contact-actions .dark-button {
-  padding: 14px 18px;
-  border: 0;
-  border-radius: 4px;
-  background: var(--accent-ink);
-  color: var(--ink);
-}
-
-@media (hover: hover) {
-  .contact-actions .dark-button:hover {
-    transform: translateY(-3px);
-  }
-}
-
 /* --------------------------------------------------------------------------
    11. Footer
    -------------------------------------------------------------------------- */
@@ -1589,6 +1570,10 @@ footer {
 
   .portrait-label {
     left: -12px;
+    padding: 11px 8px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
   }
 
   /* Sections */

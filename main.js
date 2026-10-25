@@ -317,7 +317,13 @@ const onFrame = (() => {
     const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
     const y = id === "top" ? 0 : el.getBoundingClientRect().top + window.scrollY - pad;
     glideTo(y);
-    try { history.pushState(null, "", "#" + id); } catch (err) {}
+    // only add a history entry when the address actually changes (no stacked back-button steps)
+    if (location.hash !== "#" + id) {
+      try { history.pushState(null, "", "#" + id); } catch (err) {}
+    }
+    // move keyboard focus to the section too, as a normal anchor jump would
+    if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+    el.focus({ preventScroll: true });
   });
 
   // Back / Forward: stop any glide so it doesn't fight the browser's own scroll restoration
