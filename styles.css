@@ -645,6 +645,11 @@ header.scrolled .brandmark {
   animation-name: strip-text-b;
 }
 
+/* emoji come from a taller fallback font; line-height 0 stops them from pushing the text down */
+.portrait-label .emo {
+  line-height: 0;
+}
+
 /* Editor-style title: <img src="..."> with a VS Code error squiggle */
 .portrait-code {
   position: absolute;
