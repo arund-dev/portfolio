@@ -201,74 +201,58 @@
 
         <div class="about-grid">
           <div class="about-copy reveal">
-            <p>I enjoy exploring what technology can make possible. I like figuring out how things work, trying ideas, and sticking with a problem until I can get it working. I use AI tools like Claude to build the first version, then test it, fix what breaks, and work out why it broke. So far that has meant iLike, an installable social app, and Nexus, a website for a tech solutions company.</p>
+            <p>I like figuring out how things work, trying ideas, and sticking with a problem until I can get it working. I use AI tools like Claude to build the first version, then test it, fix what breaks, and work out why it broke.</p>
             <p>I’m at the beginning of my professional journey, bringing <strong>curiosity, persistence, and a willingness to learn</strong> to every project.</p>
 
-            <div class="about-cols">
-            <div class="about-col">
-            <h3 class="skills-title mono">How I build</h3>
-            <ol class="how stagger">
-              <li><span class="num">01</span><h4>Idea</h4><p>Find something worth making.</p></li>
-              <li><span class="num">02</span><h4>Build with AI</h4><p>Get a first version working.</p></li>
-              <li><span class="num">03</span><h4>Test it</h4><p>Try it on my own phone.</p></li>
-              <li><span class="num">04</span><h4>Improve</h4><p>Fix what breaks, repeat.</p></li>
-            </ol>
-
-            </div>
-
-            <div class="about-col">
             <h3 class="skills-title mono">Skills</h3>
             <div class="skill-grid stagger">
               <div class="skill">
-                <span class="num">01 / BUILD</span>
-                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-build">Installable web apps, built with AI</button></h4>
-                <div class="tip" id="tip-build" data-code="app.improve();
-// TODO: ship it">
-                  <p>Prompt, build, test, repeat. iLike runs as an installable app with a database behind it (Supabase).</p>
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-ai">AI-assisted building</button></h4>
+                <span class="skill-note">Claude · prompting · reviewing</span>
+                <div class="tip" id="tip-ai" data-code="prompt(idea);
+review(output);">
+                  <p>I use AI tools to build the first version, then read what they wrote and fix it by hand.</p>
                 </div>
               </div>
               <div class="skill">
-                <span class="num">02 / DESIGN</span>
-                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-design">HTML, CSS &amp; responsive layouts</button></h4>
-                <div class="tip" id="tip-design" data-code="@media (max-width: 560px)
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-code">Front-end code</button></h4>
+                <span class="skill-note">HTML · CSS · JavaScript · Python</span>
+                <div class="tip" id="tip-code" data-code="@media (max-width: 560px)
 { .grid { gap: 8px } }">
-                  <p>One layout that holds up on a small phone and a wide monitor. HTML and CSS fundamentals, and a lot of resizing the window.</p>
+                  <p>Responsive, mobile-first pages that hold up on a small phone and a wide monitor. Lots of resizing the window.</p>
                 </div>
               </div>
               <div class="skill">
-                <span class="num">03 / TOOLS</span>
-                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-tools">Word, Excel &amp; PowerPoint</button></h4>
-                <div class="tip" id="tip-tools" data-code="=SUM(B2:B9)
-=AVERAGE(C2:C9)">
-                  <p>Documents, spreadsheets and slide decks that are tidy, clear and finished on time.</p>
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-apps">Apps and hosting</button></h4>
+                <span class="skill-note">Installable apps · Supabase · Cloudflare</span>
+                <div class="tip" id="tip-apps" data-code="&quot;display&quot;: &quot;standalone&quot;">
+                  <p>iLike installs like an app, runs on a Supabase database, and is hosted online with Cloudflare.</p>
                 </div>
               </div>
               <div class="skill">
-                <span class="num">04 / EXPLORE</span>
-                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-explore">Debugging &amp; online research</button></h4>
-                <div class="tip" id="tip-explore" data-code="try { fix(); }
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-debug">Debugging and research</button></h4>
+                <span class="skill-note">Test · fix · repeat</span>
+                <div class="tip" id="tip-debug" data-code="try { fix(); }
 catch { search(); }">
-                  <p>When something breaks I read the docs, search for answers, and keep trying until it runs.</p>
+                  <p>When something breaks I read the docs, search for answers, and keep going until it runs. VS Code, Git and GitHub keep track of every change.</p>
                 </div>
               </div>
               <div class="skill">
-                <span class="num">05 / PEOPLE</span>
-                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-people">Teamwork &amp; clear communication</button></h4>
-                <div class="tip" id="tip-people" data-code="git pull --rebase
+                <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-team">Leading a small team</button></h4>
+                <span class="skill-note">School web team · co-founder, treasurer</span>
+                <div class="tip" id="tip-team" data-code="team.plan();
 // stay in sync">
-                  <p>I listen first, ask when I’m unsure, and keep people updated on how things are going.</p>
+                  <p>I co-founded my school’s web team, managed its budget, and ran its social media and media coverage.</p>
                 </div>
               </div>
               <div class="skill">
-                <span class="num">06 / LANGUAGES</span>
                 <h4><button class="skill-btn" type="button" aria-expanded="false" aria-controls="tip-lang">Sinhala · English · Tamil</button></h4>
+                <span class="skill-note">Languages</span>
                 <div class="tip" id="tip-lang" data-code="say(&quot;ආයුබෝවන්&quot;);
 say(&quot;வணக்கம்&quot;);">
                   <p>I can work and chat in all three, which helps when talking to different people.</p>
                 </div>
               </div>
-            </div>
-            </div>
             </div>
           </div>
         </div>
@@ -284,7 +268,7 @@ say(&quot;வணக்கம்&quot;);">
         </div>
 
         <article class="project reveal">
-          <span class="project-tag">FEATURED PROJECT · 01</span>
+          <span class="project-tag">PROJECT · 01</span>
 
           <div class="project-title">
             <h3>iLike</h3>
