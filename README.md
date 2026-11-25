@@ -33,16 +33,6 @@ A website for a tech solutions company with services, work, quote and contact se
 
 My portfolio site, built with HTML, CSS and vanilla JavaScript and hosted on GitHub Pages.
 
-To run it locally:
-
-```bash
-git clone https://github.com/arund-dev/portfolio.git
-cd portfolio
-python3 -m http.server 8000
-```
-
-Then open `http://localhost:8000`.
-
 ## Contact
 
 - LinkedIn: [linkedin.com/in/arund-dev](https://www.linkedin.com/in/arund-dev)
