@@ -433,7 +433,6 @@ const onFrame = (() => {
   // Keep the last two words of every paragraph together so no line ends with one lonely word
   // (CSS text-wrap: pretty does this too, but Firefox and older Safari ignore it).
   document.querySelectorAll("main p").forEach((p) => {
-    if (p.closest(".hero-code")) return;
     const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
     let last = null;
     while (walker.nextNode()) if (walker.currentNode.nodeValue.trim()) last = walker.currentNode;

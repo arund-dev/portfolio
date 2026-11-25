@@ -2002,13 +2002,11 @@ footer a {
 
 
 /* --------------------------------------------------------------------------
-   Desktop hero extras: dot grid + mouse glow, terminal strip, hand-drawn marks.
+   Desktop hero extras: dot grid + mouse glow.
    Hidden by default so the mobile site is untouched; shown at 801px and up.
    The old typo-fixing code background is hidden on desktop only.
    -------------------------------------------------------------------------- */
-.hero-grid,
-.hero-glow,
-.photo-note {
+.hero-grid {
   display: none;
 }
 
@@ -2041,65 +2039,6 @@ footer a {
     transition: opacity 0.4s ease-out;
     -webkit-mask-image: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 50%), #000, transparent);
     mask-image: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 50%), #000, transparent);
-  }
-
-  /* arrow + scribble note pointing to the photo */
-  .photo-note {
-    display: block;
-    position: absolute;
-    z-index: 3;
-    top: 14px;
-    right: calc(100% + 14px); /* sits just left of the photo */
-    color: var(--accent);
-    pointer-events: none;
-    transform: rotate(-5deg);
-  }
-
-  .photo-note-text {
-    display: block;
-    font: 600 22px/1 Caveat, "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
-    white-space: nowrap;
-  }
-
-  .photo-note-arrow {
-    display: block;
-    width: 96px;
-    height: 62px;
-    margin: 2px -62px 0 auto; /* arrow reaches past the note, over the photo */
-    overflow: visible;
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transform: rotate(-6deg);
-    transform-origin: center;
-  }
-
-  .photo-note-arrow path {
-    vector-effect: non-scaling-stroke;
-    stroke-dasharray: 1;
-    stroke-dashoffset: 0;
-    animation: hand-draw 0.8s 1.1s cubic-bezier(0.4, 0, 0.2, 1) backwards;
-  }
-
-  .photo-note-arrow .head {
-    animation-delay: 1.8s;
-    animation-duration: 0.3s;
-  }
-
-  .photo-note-text {
-    animation: note-in 0.6s 1s ease-out backwards;
-  }
-
-  @keyframes hand-draw {
-    from { stroke-dashoffset: 1; }
-    to   { stroke-dashoffset: 0; }
-  }
-
-  @keyframes note-in {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: none; }
   }
 }
 
