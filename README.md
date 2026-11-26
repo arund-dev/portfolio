@@ -21,7 +21,7 @@ A social platform for finding people who share your interests, designed and buil
 
 **Stack:** HTML, CSS, JavaScript, Supabase, Cloudflare, Git and GitHub
 
-**Live:** [ilike.arunda.workers.dev](https://ilike.arunda.workers.dev)
+**Live:** [landing.arunda.workers.dev](https://landing.arunda.workers.dev)
 
 ### Nexus
 
