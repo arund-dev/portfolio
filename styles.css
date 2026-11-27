@@ -2076,3 +2076,8 @@ footer a {
   padding-top: 56px;
   border-top: 1px solid var(--line);
 }
+
+/* Nexus, mobile / tablet only: lift the desktop screenshot a bit higher than the default (desktop layout untouched) */
+@media (max-width: 800px) {
+  .project--nexus .shot-desktop { bottom: 14%; }
+}
